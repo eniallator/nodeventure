@@ -224,8 +224,10 @@ _.extend(Player.prototype, {
     if (id in this.game.rooms) {
       this.game.emit('roomTransition:' +this.getCurrentRoom().id + ':' + id, this, this.game.rooms[id], this.getCurrentRoom());
       this.game.emit('leaveRoom', this, this.getCurrentRoom(), this.game);
+      this.game.emit('leaveRoom:' + this.getCurrentRoom().id, this, this.getCurrentRoom(), this.game);
       this.location = id;
       this.game.emit('enterRoom', this, this.getCurrentRoom(), this.game);
+      this.game.emit('enterRoom:' + this.getCurrentRoom().id , this, this.getCurrentRoom(), this.game);
     }
   },
   isDead: function () {
