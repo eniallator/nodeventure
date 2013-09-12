@@ -8,7 +8,7 @@ room('methodiks_room', {
   image: ''
 });
 
-handler('enterRoom:home', function (player, room, game) {
+handler('enterRoom:methodiks_room', function (player, room, game) {
   player.display.eval(function () {
     // This function will be executed on the client
 
@@ -21,7 +21,7 @@ handler('enterRoom:home', function (player, room, game) {
     	position: 'absolute',
     	bottom: 50,
     	left: 50
-    })
+    });
     
   });
 });
