@@ -2,11 +2,12 @@
  * game object. It also handles reloading world modules as they change.
  *
  */
-var vm = require('vm'),
-    fs      = require("fs"),
-    game    = require('./game'),
-    cs      = require('coffee-script'),
-    _       = require('underscore'),
+var vm          = require('vm'),
+    fs          = require("fs"),
+    game        = require('./game'),
+    cs          = require('coffee-script'),
+    _           = require('underscore'),
+    yaml        = require('yaml-front-matter'),
     WorldModule = require('./world').WorldModule;
 
 module.exports.Loader = Loader;
@@ -33,41 +34,70 @@ _.extend(Loader.prototype, {
         _this = this;
     for (var i = 0; i < files.length; i++) {
         var file = files[i],
+            fileLower = file.toLowerCase(),
             fullPath = this.path + "/" + file,
-            type = file.match(/^[^.~].*\.(js|coffee)$/);
-        // Check if it's a .js file.
-        // TODO: Add support for coffeescript, maybe for JSON also?
-        // Ignore files starting with ~ or .(it's an Emacs thing)
-        if (type && fs.statSync(fullPath).isFile()) {
-          var mtime = fs.statSync(fullPath).mtime + '';
-          // Check if the file has changed
+            isFile = fs.statSync(fullPath).isFile(),
+            mtime = fs.statSync(fullPath).mtime + '',
+            // Ignore files starting with ~ or . (it's an Emacs thing):
+            isHidden = /^[.~]/.test(file);
+
+        // If this is a file...
+        if (isFile && !isHidden) {
+          // ...and it has changed...
           if (!this.modules[file] || mtime !== this.modules[file].mtime) {
-            this.game.warn('Reloading world module:' + file);
-            // Ok, lets (re)load it!
-            var code = fs.readFileSync(fullPath, 'utf8'),
-                // Giving the module full access to node, could change
-                // this....
-                module = new WorldModule(this.game);
+            // ...then let's look at loading it:
 
-            if(type[1] == 'coffee') {
-              try {
-                code = cs.compile(code);
-              } catch(e) {
-                this.game.error('FAILED TO COMPILE COFFEE SCRIPT: ' + e);
-                continue;
-              }
-            }
+            var code = fs.readFileSync(fullPath, "utf8");
 
-            module.mtime = mtime;
-            try {
-              vm.runInNewContext(code, module, fullPath);
-            } catch (e) {
-              this.game.error("Loading world module: " + fullPath + "\n" + e.stack);
+            // Javascript modules:
+            if(this.stringEndsWith(fileLower, ".js")) {
+              this.loadModule(file, mtime, function(module) {
+                vm.runInNewContext(code, module, fullPath);
+              });
+
+            // Coffee Script modules:
+            } else if(this.stringEndsWith(fileLower, ".coffee")) {
+              this.loadModule(file, mtime, function(module) {
+                vm.runInNewContext(cs.compile(code), module, fullPath);
+              });
+
+            // Plain text room modules:
+            } else if(this.stringEndsWith(fileLower, ".txt")) {
+              this.loadModule(file, mtime, function(module) {
+                // Strip the filename extension to use as a default room name:
+                var defaultName = file.substring(0, file.length - 4);
+
+                // yaml.loadFront() returns null if there is no YAML front matter.
+                // In this case we return a simple object to simulate empty YAML.
+                var obj  = yaml.loadFront(code, "__content") || { __content: code };
+
+                module.room(obj.name || defaultName, {
+                  description : obj.__content,
+                  image       : obj.image,
+                  exits       : obj.exits || []
+                });
+              });
             }
-            this.modules[file] = module;
           }
         }
     }
     return this;
+  },
+
+  stringEndsWith: function (string, suffix) {
+    return string.indexOf(suffix, string.length - suffix.length) !== -1;
+  },
+
+  // string string string -> void
+  loadModule: function (name, mtime, func) {
+    try {
+      var module = new WorldModule(this.game);
+      module.mtime = mtime;
+      func.call(this, module);
+      this.modules[name] = module;
+      this.game.warn('Reloaded world module: ' + name);
+    } catch (e) {
+      this.game.error("Error loading world module: " + name + "\n" + e.stack);
+    }
   }
 });

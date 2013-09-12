@@ -51,17 +51,18 @@ function WorldModule(game) {
         game.broadcast(e);
         game.broadcast(e.stack);
         console.log('Error running handler for event: ' + event);
+        console.log(e.stack);
         console.trace();
         _this.removeListener(event, wrapped);
       }
     };
     _this.on(event,  wrapped);
   };
-  // Create an item in the given room every spawnFrequency seconds if
+  // Create an item in the given room every respawnTimer seconds if
   // one of the same name does not already exist.
-  this.item = function (room, name, spawnFrequency, item) {
+  this.item = function (room, name, item) {
     item.name = name;
-    _this._spawns[room + ':' + name] = {room: room, lastSpawn: 0, spawnFrequency: spawnFrequency, item: item};
+    _this._spawns[room + ':' + name] = {room: room, lastSpawn: 0, respawnTimer: item.respawnTimer || 10, item: item};
   };
 
   this.event = function (eventName, subjectId, eventHandler) {
@@ -77,7 +78,7 @@ function WorldModule(game) {
     _.each(_this._spawns, function (spawn) {
       var t = (new Date()).getTime()/1000,
           room = game.rooms[spawn.room];
-      if (t-spawn.lastSpawn > spawn.spawnFrequency) {
+      if (t - spawn.lastSpawn > spawn.respawnTimer) {
         spawn.lastSpawn = t;
         if (room && !room.getItem(spawn.item.name)) {
           var item = _.clone(spawn.item);

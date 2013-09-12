@@ -11,6 +11,12 @@ body {
   color:lime;
   margin: 0;
 }
+
+header {
+  background: lime;
+  color: black;
+}
+
 h1{
   margin: 0;
 }
@@ -21,10 +27,10 @@ h1 a, h1 a:visited {
 
 /* output */
   #output {
-  	margin: 6em 0 8em 0;
+  	margin: 0.5em 0 8em 0;
   	padding:0 20px;
-        width: 50%;
-        float: left;
+    width: 47%;
+    float: left;
   }
 
   #display iframe {
@@ -32,16 +38,20 @@ h1 a, h1 a:visited {
       height: 100%;
       position: fixed;
       left: 50%;
+      top: 0;
+      border: none;
+      border-left: 1px solid lime;
   }
 
   #welcome {
     height: 50px;
     font-family: 'Press Start 2P', cursive;
     margin-bottom:3em;
+    font-size: 0.8em;
   }
 
   pre {
-    font-size: 1.2em;
+    font-size: 1em;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -76,7 +86,7 @@ h1 a, h1 a:visited {
 
   #input input,
   #input button {
-    font-size:24px;
+    font-size:21px;
     background:transparent;
     border:1px solid lime;
     color:lime;
