@@ -22,7 +22,7 @@ itemCommand('flip', 'table', function(rest, player, item, game){
     );
     tableFlipped = !tableFlipped;
     
-    player.display.eval(function(){
+    player.display.eval('var tableFlipped = ' + tableFlipped + ';' + (function(){
         jQuery('img#table').css('transform', tableFlipped ? 'rotate(180)' : '');
-    });
+    }).toString();
 });
