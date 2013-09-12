@@ -13,3 +13,7 @@ item('spinning_cube', 'black_cube_fragment', {
   short: 'A fragment of the ancient black cube...',
   description: 'The ancient black cube is said to endow its owner with misterious supernatural powers...'
 });
+
+command('grab_fragment', 'This command allows you to grab a fragment of the black cube', function(){
+    alert("You've got a black cube fragment!");
+});
