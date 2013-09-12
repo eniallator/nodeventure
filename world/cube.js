@@ -20,4 +20,5 @@ room('spinning_cube', {
 
 itemCommand('grab', 'fragment', 'This command allows you to grab a fragment of the black cube', function(game, player, item){
     player.write("You've just grabbed a fragment of the black");
+    console.log(player);
 });
