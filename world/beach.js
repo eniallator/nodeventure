@@ -34,8 +34,10 @@ itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) 
     var boat = _.find(room.items, function(item) { return item.name == 'boat'; });
     
     if(boat) {
-        player.write('Yay!');
+        boat.name = 'sailboat';
+        boat.description = 'a boat with a sail';
+        player.write('Now the boat has a sail. Type "sail" to ... er... sail.');
     } else {
-        player.write('Nay!');
+        player.write('Use the sail with what?');
     }
 });
