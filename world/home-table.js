@@ -15,6 +15,6 @@ itemCommand('use', 'table', function(rest, player, item, game){
 var tableFlipped = true;
 
 itemCommand('flip', 'table', function(rest, player, item, game){
-    player.write('(╯°□°）╯︵ ┻━┻');
+    player.write(tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)');
     tableFlipped = !tableFlipped;
 });
