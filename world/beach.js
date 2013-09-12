@@ -29,7 +29,7 @@ itemCommand("open", "bottle", "Open something", function(rest, player, item, gam
 });
 
 function findItem(room, name) {
-  return _.find(room.items, function(item) { return item.name == 'boat'; });
+  return _.find(room.items, function(item) { return item.name == name; });
 }
 
 itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) {
@@ -38,7 +38,7 @@ itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) 
     
     if(boat) {
         boat.name = 'sailboat';
-        boat.short = 'A boat with a sail';
+        boat.short = 'a sailboat';
         boat.description = 'a boat with a sail';
         player.write('Now the boat has a sail. Type "sail" to sail into the ocean.');
     } else {
