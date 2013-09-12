@@ -12,9 +12,13 @@ itemCommand('use', 'table', function(rest, player, item, game){
     player.write('You climb on the table and proclaim your power.')
 });
 
-var tableFlipped = true;
+var tableFlipped = false;
 
 itemCommand('flip', 'table', function(rest, player, item, game){
-    player.write(tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)');
+
+    player.getCurrentRoom().broadcast(
+      player.name + ' flips out ' + (tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)')
+    );
     tableFlipped = !tableFlipped;
+    
 });
