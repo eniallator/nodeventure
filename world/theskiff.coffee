@@ -6,3 +6,4 @@ room 'theskiff',
 
   exits:
     north: 'home'
+    south: 'quantum_entrance'
