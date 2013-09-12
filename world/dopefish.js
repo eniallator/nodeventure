@@ -5,8 +5,8 @@ var dopefish = character('dopefish', {
 });
 
 handler('tick', function () {
-  // every 30 minutes on average
-  if (Math.random() * 30 < 1) {
+  // every 300 seconds on average
+  if (Math.random() * 3 < 1) {
     var room = dopefish.getCurrentRoom(),
         exits = _.keys(room.exits),
         i = Math.floor(Math.random()*exits.length),
@@ -14,11 +14,10 @@ handler('tick', function () {
     
     var roomPlayers = room.getPlayers();
     
-    for(var i = 0; i < roomPlayers.length; i++)
-    {
-      roomPlayers[i].write("The dopefish says \"Duh!\"");
-      roomPlayers[i].display.show('http://pressthebuttons.typepad.com/photos/uncategorized/dopefish.png');
-    }
+    var i = (Math.random() * roomPlayers.length);
+    
+    roomPlayers[i].write("The dopefish says \"Duh!\"");
+    roomPlayers[i].display.show('http://pressthebuttons.typepad.com/photos/uncategorized/dopefish.png');
   }
 });
 
