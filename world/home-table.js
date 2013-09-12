@@ -23,6 +23,10 @@ itemCommand('flip', 'table', function(rest, player, item, game){
     tableFlipped = !tableFlipped;
     
     player.display.eval(function(){
-        jQuery('img#table').css('transform', tableFlipped ? 'rotate(180)' : '');
+        jQuery('<style></style>').appendTo('body').text(
+            'img#table.flipped { transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); }'
+        );
+
+        jQuery('img#table').toggleClass('flipped');
     }, {tableFlipped: tableFlipped});
 });
