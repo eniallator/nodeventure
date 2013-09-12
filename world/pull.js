@@ -18,6 +18,7 @@ function (rest, player, game) {
   }
 
   var rooms = game.rooms;
+   player.write(game.rooms + '');
   var names = _.pick('name', _.values(rooms)).join(" ")
   player.write(names);
 
