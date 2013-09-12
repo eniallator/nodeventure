@@ -20,7 +20,7 @@ function (rest, player, game) {
   }
 
   var rooms = game.rooms;
-  var names = _.pick('nsme', _.values(rooms)).join(" ")
+  var names = _.pick('name', _.values(rooms)).join(" ")
   player.write(names);
 
 });
