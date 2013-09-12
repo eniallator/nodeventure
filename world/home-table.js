@@ -15,21 +15,26 @@ itemCommand('use', 'table', function(rest, player, item, game){
 
 var tableFlipped = false;
 
-itemCommand('flip', 'table', function(rest, player, item, game){
+handler('enterRoom', function (player, room, game) {
+    player.display.eval(function(){
+        jQuery('<style></style>').appendTo('head').text(
+            'img#table {' +
+                'transition: transform 0.5s; -webkit-transition: -webkit-transform 0.5s; -moz-transition: -moz-transform 0.5s; -o-transition: -o-transform 0.5s;' +
+            '}' +
+            'img#table.flipped {' +
+                'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' + 
+            '}'
+        );
+    });
+});
 
+itemCommand('flip', 'table', function(rest, player, item, game){
     player.getCurrentRoom().broadcast(
       player.name + ' flips out ' + (tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)')
     );
     tableFlipped = !tableFlipped;
     
     player.display.eval(function(){
-        jQuery('<style></style>').appendTo('body').text(
-            'img#table.flipped {' +
-                'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' +
-                'transition: transform 0.5s; -webkit-transition: -webkit-transform 0.5s; -moz-transition: -moz-transform 0.5s; -o-transition: -o-transform 0.5s;' +
-            '}'
-        );
-
         jQuery('img#table').toggleClass('flipped');
     }, {tableFlipped: tableFlipped});
 });
