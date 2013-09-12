@@ -11,3 +11,10 @@ itemCommand('look', 'table', function(rest, player, item, game){
 itemCommand('use', 'table', function(rest, player, item, game){
     player.write('You climb on the table and proclaim your power.')
 });
+
+var tableFlipped = true;
+
+itemCommand('flip', 'table', function(rest, player, item, game){
+    player.write('(╯°□°）╯︵ ┻━┻');
+    tableFlipped = !tableFlipped;
+});
