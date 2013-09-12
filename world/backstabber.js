@@ -77,6 +77,7 @@ command('teach', function (rest, player, game) {
   if ( dictionary[what] ) {
     dictionary[what].push(words);
     player.write("Backstabbers says to you: Thank you for your " + what);
+    game.broadcast(player.name + " taught me a new " + attributes[0].trim() + ": " + words);
   }
 
   else {
