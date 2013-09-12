@@ -17,3 +17,7 @@ room('beach', {
     },
   ]
 });
+
+itemCommand("open", "bottle", "Open something", function(rest, player, item, game){
+  player.write("Inside the bottle you find a message scawled up inside it. It says 'Help! I've been marroned on an island for the last 5 years! My only friend is a Walrus who i've decided to name 'Gregory' since I was needing company. Bring help and fish sticks for Gregory, since he likes those and I have run out.")
+});

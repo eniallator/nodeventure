@@ -199,8 +199,16 @@ handler('enterRoom', function (player, room, game) {
 
 handler("describeItem:*", function (game, player, item) {
   if (item.image) {
+    var width='50%',
+      height='50%';
+    if (item.width) {
+      width=item.width+'px';
+    };
+    if (item.height) {
+      height=item.height+'px';
+    };
     // TODO: Position so we can see more than one item
-    player.display.show(item.image, item.name, {width: "50%", height: "50%"});
+    player.display.show(item.image, item.name, {width: width, height: height});
   }
 });
 

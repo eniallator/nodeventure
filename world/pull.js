@@ -9,8 +9,6 @@ function (rest, player, game) {
     player.write(syntax);
     return;
   }
-
-  var itemName = args[0];
   
   var room = player.getCurrentRoom();
   
@@ -20,5 +18,7 @@ function (rest, player, game) {
   }
 
   var rooms = game.rooms;
-  player.write(rooms);
+  var names = _.keys(rooms).join(" ")
+  player.write(names);
+
 });

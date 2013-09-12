@@ -11,6 +11,17 @@ room('butterfly', {
 item('butterfly', 'red vial', {
   image: 'http://skyapperley.co.uk/nodeadventure/red-vial.png',
   respawnTime: 60,
+  width:60,
+  height:100,
   short: 'a red vial',
   description: 'It is a red vial and you can not tell what it is.'
+});
+
+item('butterfly', 'purple vial', {
+  image: 'http://skyapperley.co.uk/nodeadventure/purple-vial.png',
+  respawnTime: 60,
+  width:60,
+  height:100,
+  short: 'a purple vial',
+  description: 'It is a purple vial. It looks healthy.'
 });
