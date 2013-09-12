@@ -18,22 +18,10 @@ handler('tick', function () {
     {
       roomPlayers[i].write("The dopefish says \"Duh!\"");
     }
-        
-    
-    room.broadcast('The Dopefish picks himself up and heads to the ' + exit + ' exit');
-    dopefish.execute('go ' + exit);
-    if (room === dopefish.getCurrentRoom()) {
-      room.broadcast('The Dopefish is enraged to find himself back in the place');
-      dopefish.description = 'enraged';
-    } else {
-      room = dopefish.getCurrentRoom();
-      if (room.description.toLowerCase().indexOf('snow') === -1) {
-        room.broadcast('The dopefish seems dismayed not to find any snow here');
-        dopefish.description = 'half man, half monkey,half bear and all yeti. He seems to miss the snow.';
-      } else {
-        room.broadcast('The dopefish seems delighted to find snow here!');
-        dopefish.description = 'Half man, half monkey, half bear and all yeti. He seems to like the snow.';
-      }
-    }
   }
+});
+
+itemCommand("touch", "dopefish", null, function (game, player, item) {
+    player.write("You touch the dopefish and die :(");
+    //player.getCurrentRoom().broadcast(player.name + ' is admiring themself in the ' + item.name, player);
 });
