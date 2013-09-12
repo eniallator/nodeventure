@@ -51,7 +51,7 @@ handler('tick', function () {
 
     guys = players_in_room.slice(0, players_in_room.length - 1).join(', ') + last_player;
 
-    room.broadcast(guys + " I've something very important to tell to each and everyone of you");
+    room.broadcast("backstabber says: " + guys + " I've something very important to tell to each and everyone of you");
 
     players_in_room.forEach(function(player, i) {
       var who = i - 1
