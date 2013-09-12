@@ -1,4 +1,4 @@
-room('methodiks room', {
+room('methodiks_room', {
   description: "All you have to do is click on the circles",
   exits: {
     west: 'alley',
