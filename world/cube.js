@@ -17,6 +17,5 @@ item('spinning_cube', 'black_cube_fragment', {
 });
 
 command('grab', 'This command allows you to grab a fragment of the black cube', function(rest, player, game){
-    alert("You've got a black cube fragment!");
-    console.log(player);
+    console.log('You\'ve just grabbed a fragment of the black ');
 });

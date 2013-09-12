@@ -52,6 +52,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     		left: 20,
     		background: 'pink'
     	});
+    	alert('you are in Methodiks room');
 
     })
 

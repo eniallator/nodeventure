@@ -65,9 +65,10 @@
   };
 
 
-  DisplayAPI.prototype.eval = function (string) {
+  DisplayAPI.prototype.eval = function (string, args) {
     this._run(function () {
-      this.win.eval(string);
+      var wrapped = "with (" +JSON.stringify(args || {}) + ") {" + string + "}";
+      this.win.eval(wrapped);
     });
   };
 
