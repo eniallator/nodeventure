@@ -28,7 +28,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	position: 'absolute',
     	bottom: 50,
     	left: 0,
-    	backround: '#7affca'
+    	background: '#7affca'
     })
     $('#circle2').css({
     	position: 'absolute',
