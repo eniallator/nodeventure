@@ -12,19 +12,40 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
   player.display.eval(function () {
     // This function will be executed on the client
 
-    $('<div id="circle1">circle1</div>').appendTo('body');
-    $('#circle1').css({
+    $('<div id="circle1" class="circle"></div>').appendTo('body');
+    $('<div id="circle2" class="circle"></div>').appendTo('body');
+    $('<div id="circle3" class="circle"></div>').appendTo('body');
+    $('.circle').css({
     	background: 'white',
-    	height: '250px',
-    	width: '250px',
-    	borderRadius: '250px',
-    	position: 'absolute',
-    	bottom: 50,
-    	left: 50
+    	paddingTop: '30%',
+    	width: '30%',
+    	borderRadius: '250px'
     });
     var container = $('#container').appendTo('body');
 
-    $.ajax('http://methodik.co.uk/nodeventure/methodiks-room-markup.html');
+    // styles
+    $('#circle1').css({
+    	position: 'absolute',
+    	bottom: 50,
+    	left: 0,
+    	backround: 'whitesmoke'
+    })
+    $('#circle2').css({
+    	position: 'absolute',
+    	bottom: 50,
+    	left: '50%',
+    	marginLeft: '-15%',
+    	background: 'lightgrey'
+    });
+    $('#circle3').css({
+    	position: 'absolute',
+    	bottom: 50,
+    	right: 0,
+    	background: 'red'
+    });
+
+
+    
 
 
     
