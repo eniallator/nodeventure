@@ -4,5 +4,4 @@ room 'theskiff',
   """
 
   exits:
-    west: 'beige'
-    east: 'magnolia'
+    north: 'home'
