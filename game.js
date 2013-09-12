@@ -246,11 +246,11 @@ function Display(object, broadcast) {
 }
 
 _.extend(Display.prototype, {
-  eval: function (code) {
+  eval: function (code, vars) {
     if (_.isFunction(code)) {
       code = "(" + code.toString() + ")(display)";
     }
-    this._command("eval", [code]);
+    this._command("eval", [code, vars]);
   },
   _command: function (command, args) {
     this.broadcast.call(this.object, {display: {command: command, arguments: args}});
