@@ -17,8 +17,8 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     $('<div id="circle3" class="circle"></div>').appendTo('body');
     $('.circle').css({
     	background: 'white',
-    	height: '250px',
-    	width: '250px',
+    	paddingTop: '30%',
+    	width: '30%',
     	borderRadius: '250px'
     });
     var container = $('#container').appendTo('body');
@@ -27,17 +27,21 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     $('#circle1').css({
     	position: 'absolute',
     	bottom: 50,
-    	left: 50
+    	left: 0,
+    	backround: 'whitesmoke'
     })
     $('#circle2').css({
     	position: 'absolute',
     	bottom: 50,
-    	left: 300
+    	left: '50%',
+    	marginLeft: '-125px',
+    	background: 'lightgrey'
     });
     $('#circle3').css({
     	position: 'absolute',
     	bottom: 50,
-    	left: 600
+    	right: 0,
+    	background: 'red'
     });
 
 
