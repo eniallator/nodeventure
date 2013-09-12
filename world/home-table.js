@@ -17,7 +17,7 @@ var tableFlipped = false;
 itemCommand('flip', 'table', function(rest, player, item, game){
 
     player.getCurrentRoom().broadcast(
-      player.name + ' flips the table ' + (tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)')
+      player.name + ' flips out ' + (tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)')
     );
     tableFlipped = !tableFlipped;
     
