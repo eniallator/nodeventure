@@ -1,7 +1,7 @@
 var hammer = character('mc-hammer', {
 
   location: 'home',
-  description: 'U Can't Touch This.'
+  description: 'U Can\'t Touch This.'
 
 });
 
