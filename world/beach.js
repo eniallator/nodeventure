@@ -14,14 +14,14 @@ room('beach', {
       short: 'a boat',
       description: 'a fine looking seaworthy craft, if only the sails wernt missing.',
       respawnTimer: 60
-    },
-    {
-      name: 'sail',
-      short: 'a sail',
-      description: 'a worn sail that may or may not be seaworthy. Its up to you to decide if you\'ll risk it.',
-      respawnTimer: 60
     }
   ]
+});
+
+item('beige', 'sail', {
+  short: 'a sail',
+  description: 'a worn sail that may or may not be seaworthy. Its up to you to decide if you\'ll risk it.',
+  respawnTimer: 60
 });
 
 itemCommand("open", "bottle", "Open something", function(rest, player, item, game){
