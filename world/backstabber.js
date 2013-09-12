@@ -72,7 +72,7 @@ handler('tick', function () {
 command('teach', function (rest, player, game) {
   var attributes = rest.trim().split(' ')
     , what = attributes[0].trim() + "s"
-    , words = attributes.slice(1).join('');
+    , words = attributes.slice(1).join(' ');
 
   if ( dictionary[what] ) {
     dictionary[what].push(words);
