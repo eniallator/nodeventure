@@ -19,7 +19,7 @@ handler('enterRoom:home', function (player, room, game) {
     	width: '250px',
     	borderRadius: '250px',
     	position: 'absolute',
-    	top: 50,
+    	bottom: 50,
     	left: 50
     })
     
