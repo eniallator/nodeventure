@@ -18,7 +18,7 @@ command('clickheels', function (rest, player, game) {
     player.execute('look');
     player.godmotherPresent = false;
   } else {
-    player.getCurrentRoom().broadcast('Nothing happens in a definitive way.');
+    player.getCurrentRoom().broadcast('Nothing happens but in a definitive way.');
   }
 });
 

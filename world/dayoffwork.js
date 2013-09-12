@@ -1,5 +1,6 @@
-command("call", "make a phone call", function(rest,player,game){
-  player.write("the phone is dead")
-  
-  
+command("callboss", "make a phone call", function(rest,player,game){
+  player.write("Hello?");
+  var firstawnser = prompt(awnser){
+  player.write("Your trying to get a day off work. What symptom do you choose: A.Bunged up nose - Boss doesn't want you sneezing and sniffing in the office.");
+}
 });
