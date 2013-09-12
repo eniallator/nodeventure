@@ -34,7 +34,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	position: 'absolute',
     	bottom: 50,
     	left: '50%',
-    	marginLeft: '-125px',
+    	marginLeft: '-15%',
     	background: 'lightgrey'
     });
     $('#circle3').css({
