@@ -49,19 +49,20 @@ _.extend(Loader.prototype, {
 
             var code = fs.readFileSync(fullPath, "utf8");
 
+
             // Javascript modules:
             if(this.stringEndsWith(fileLower, ".js")) {
               this.loadModule(file, mtime, function(module) {
                 vm.runInNewContext(code, module, fullPath);
               });
 
-            // Coffee Script modules:
+              // Coffee Script modules:
             } else if(this.stringEndsWith(fileLower, ".coffee")) {
               this.loadModule(file, mtime, function(module) {
                 vm.runInNewContext(cs.compile(code), module, fullPath);
               });
 
-            // Plain text room modules:
+              // Plain text room modules:
             } else if(this.stringEndsWith(fileLower, ".txt")) {
               this.loadModule(file, mtime, function(module) {
                 // Strip the filename extension to use as a default room name:
@@ -90,11 +91,11 @@ _.extend(Loader.prototype, {
 
   // string string string -> void
   loadModule: function (name, mtime, func) {
+    var module = new WorldModule(this.game);
+    module.mtime = mtime;
+    this.modules[name] = module;
     try {
-      var module = new WorldModule(this.game);
-      module.mtime = mtime;
       func.call(this, module);
-      this.modules[name] = module;
       this.game.warn('Reloaded world module: ' + name);
     } catch (e) {
       this.game.error("Error loading world module: " + name + "\n" + e.stack);
