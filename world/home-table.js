@@ -26,7 +26,7 @@ itemCommand('flip', 'table', function(rest, player, item, game){
         jQuery('<style></style>').appendTo('body').text(
             'img#table.flipped {' +
                 'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' +
-                'transition: transform 0.5s; -webkit-transition: transform 0.5s; -moz-transition: transform 0.5s; -o-transition: transform 0.5s;'
+                'transition: transform 0.5s; -webkit-transition: transform 0.5s; -moz-transition: transform 0.5s; -o-transition: transform 0.5s;' +
             '}'
         );
 
