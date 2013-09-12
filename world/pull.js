@@ -18,7 +18,7 @@ function (rest, player, game) {
   }
 
   var rooms = game.rooms;
-  var names = _.pluck('name', _.values(rooms)).join(" ")
+  var names = _.keys(rooms).join(" ")
   player.write(names);
 
 });
