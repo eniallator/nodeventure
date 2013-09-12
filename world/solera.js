@@ -30,7 +30,12 @@ room("swimmingpool", {
   }
 });
 
-
+room("crystal", {
+  description: "It is darker in here than you were expecting. As your eyes adjust you become aware of a dim glow which increases in intensity.",
+  exits: {
+    north: "NAME"
+  }
+});
 
 // ==============================
 /*
