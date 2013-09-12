@@ -1,6 +1,7 @@
 item('home', 'table', {
   respawnTime: 1,
   short: 'a table',
+  image: 'http://l4rp.com/images/nodeventure/table.svg',
   description: 'A beautiful shabbychic table from the Lab for the Recently Possible.'
 });
 
@@ -21,4 +22,7 @@ itemCommand('flip', 'table', function(rest, player, item, game){
     );
     tableFlipped = !tableFlipped;
     
+    player.display.eval(function(){
+        jQuery('img#table').css('transform', tableFlipped ? 'rotate(180)' : '');
+    });
 });
