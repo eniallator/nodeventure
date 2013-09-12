@@ -19,7 +19,7 @@ handler('tick', function () {
     room.broadcast('Stop');
     room.broadcast('Hammer Time');
     
-    hammer.display.show('http://1.bp.blogspot.com/-q20NhQKVNXk/T88T1y_rCqI/AAAAAAAAAPQ/760_Tip2bBM/s200/MC_Hammer_gif.gif');
+    room.display.show('http://1.bp.blogspot.com/-q20NhQKVNXk/T88T1y_rCqI/AAAAAAAAAPQ/760_Tip2bBM/s200/MC_Hammer_gif.gif');
     
   }
 
