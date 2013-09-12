@@ -16,18 +16,17 @@ itemCommand('use', 'table', function(rest, player, item, game){
 var tableFlipped = false;
 
 player.display.eval(function(){
-    jQuery('<style></style>').appendTo('body').text(
+    jQuery('<style></style>').appendTo('head').text(
         'img#table {' +
             'transition: transform 0.5s; -webkit-transition: -webkit-transform 0.5s; -moz-transition: -moz-transform 0.5s; -o-transition: -o-transform 0.5s;' +
         '}' +
         'img#table.flipped {' +
-            'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);'
+            'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' + 
         '}'
     );
 });
 
 itemCommand('flip', 'table', function(rest, player, item, game){
-
     player.getCurrentRoom().broadcast(
       player.name + ' flips out ' + (tableFlipped ? '(╯°□°）╯︵ ┻━┻' : '┬─┬ノ( º _ ºノ)')
     );
