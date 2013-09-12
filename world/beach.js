@@ -1,7 +1,7 @@
 room('beach', {
   description: "waves crash upon a stony beach.",
   image: "http://farm9.staticflickr.com/8248/8502899877_19c3a4a6f7.jpg",
-  exits: { south: 'sea', north: 'beachpath', west: 'westbeach' },
+  exits: { north: 'beachpath', west: 'westbeach' },
   items: [
     {
       name: 'bottle',
@@ -35,6 +35,7 @@ itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) 
     
     if(boat) {
         boat.name = 'sailboat';
+        boat.short = 'A boat with a sail';
         boat.description = 'a boat with a sail';
         player.write('Now the boat has a sail. Type "sail" to ... er... sail.');
     } else {
