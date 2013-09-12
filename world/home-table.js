@@ -1,7 +1,6 @@
 item('home', 'table', {
   respawnTime: 1,
   short: 'a table',
-  image: 'http://l4rp.com/images/nodeventure-table.svg',
   description: 'A beautiful shabbychic table from the Lab for the Recently Possible.'
 });
 
