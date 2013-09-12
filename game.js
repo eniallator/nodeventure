@@ -31,6 +31,9 @@ _.extend(Game.prototype, {
     if (!(name in this.players)) {
       this.players[name] = new Player(this, name);
       this.emit('joinPlayer', this.players[name], this);
+      if (this.players[name].getCurrentRoom()) {
+        this.game.emit('enterRoom', this.players[name], this.players[name].getCurrentRoom(), this);
+      }
     }
     return this.players[name];
   },
