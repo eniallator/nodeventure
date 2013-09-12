@@ -1,9 +1,7 @@
 command("callboss", "make a phone call", function(rest,player,game){
   player.write("Hello?");
-  player.write("Your trying to get a day off work. What symptom do you choose: A.Bunged up nose");
-  player.execute(awnser){
-    if (awnser = "a"){
-      player.write("Boss doesn't want you sneezing and sniffing in the office.")
-    }
-  }
-});
+  player.write("Your trying to get a day off work. What symptom do you choose: A.Bunged up nose B.Sore Throat C.Scream in agony");
+};
+command("bunged up nose", function(rest,player,game){
+  Player.write("Boss doesn't want you sneazing and sniffing in the office. How do you respond? A. I dont think i can come in today. B.The thought of working has made me sick.")
+}
