@@ -18,12 +18,6 @@ room('spinning_cube', {
   ]
 });
 
-/*item('spinning_cube', 'fragment', {
-  respawnTime: 120,
-  short: 'A fragment of the ancient black cube...',
-  description: 'The ancient black cube is said to endow its owner with misterious supernatural powers...'
-});*/
-
-itemCommand('use', 'fragment', 'This command allows you to grab a fragment of the black cube', function(game, player, item){
+itemCommand('grab', 'fragment', 'This command allows you to grab a fragment of the black cube', function(game, player, item){
     player.write("You've just grabbed a fragment of the black");
 });
