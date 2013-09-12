@@ -11,7 +11,15 @@ handler('tick', function () {
         exits = _.keys(room.exits),
         i = Math.floor(Math.random()*exits.length),
         exit = exits[i];
-    console.log(room);
+    
+    var roomPlayers = room.getPlayers();
+    
+    for(var i = 0; i < roomPlayers.length; i++)
+    {
+      roomPlayers[i].write("The dopefish says \"Duh!\"");
+    }
+        
+    
     room.broadcast('The Dopefish picks himself up and heads to the ' + exit + ' exit');
     dopefish.execute('go ' + exit);
     if (room === dopefish.getCurrentRoom()) {
