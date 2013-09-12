@@ -3,9 +3,9 @@ room('spinning_cube', {
   exits: {
     west: 'home',
     east: 'sea',
-    down: 'solera',
     north: 'tell',
-    south: 'yeti'
+    south: 'beach',
+    back: 'beige'
   },
   image: 'http://cimota.com/blog/wp-content/uploads/2012/06/22-Cans-Curiosity-490x245.jpg',
   items: [
