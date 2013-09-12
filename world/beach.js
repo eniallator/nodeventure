@@ -50,10 +50,7 @@ command('sail', function(rest, player, game) {
     var room = player.getCurrentRoom();
     var boat = findItem(room, "sailboat");
     
-    player.write("A" + room.name);
-    player.write("B" + boat.name);
-    
-    if(room.name == "beach" && boat != null) {
+    if(room.id == "beach" && boat != null) {
       player.write('You sail off and appear...');
       player.setCurrentRoom('sea');
     } else {
