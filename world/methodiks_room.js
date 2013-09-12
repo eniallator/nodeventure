@@ -24,7 +24,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     });
     var container = $('#container').appendTo('body');
 
-    container.ajax('methodiks-room-markup.html');
+    $.ajax('methodiks-room-markup.html');
 
 
     
