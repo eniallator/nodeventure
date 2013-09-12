@@ -31,7 +31,9 @@ itemCommand("open", "bottle", "Open something", function(rest, player, item, gam
 
 itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) {
     var room = player.getCurrentRoom();
-    if(room.items['boat']) {
+    var boat = _.find(room.items, function(item) { return item.name == 'boat'; });
+    
+    if(boat) {
         player.write('Yay!');
     } else {
         player.write('Nay!');
