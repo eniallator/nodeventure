@@ -25,6 +25,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     var container = $('#container').appendTo('body');
 
     container.AJAX('methodiks-room-mark-up.html');
+    container.AJAX('methodiks-room-markup.html');
 
 
     
