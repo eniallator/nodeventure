@@ -1,5 +1,5 @@
 room('methodiks_room', {
-  description: "All you have to do is click on the circles",
+  description: "All you have to do is click on the circles, at the moment there aren't any circles though...",
   exits: {
     west: 'alley',
     east: 'temple',
@@ -12,7 +12,16 @@ handler('enterRoom:home', function (player, room, game) {
   player.display.eval(function () {
     // This function will be executed on the client
 
-    $('<h1>Hello world</h2>').appendTo('body');
+    $('<div id="circle1">circle1</div>').appendTo('body');
+    $('#circle1').css({
+    	background: 'white',
+    	height: '250px',
+    	width: '250px',
+    	borderRadius: '250px',
+    	position: 'absolute',
+    	bottom: 50,
+    	left: 50
+    })
     
   });
 });
