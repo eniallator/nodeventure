@@ -6,7 +6,7 @@ var dopefish = character('dopefish', {
 
 handler('tick', function () {
   // every 30 minutes on average
-  if (Math.random() * 30 < 1) {
+  if (1) {//Math.random() * 30 < 1) {
     var room = dopefish.getCurrentRoom(),
         exits = _.keys(room.exits),
         i = Math.floor(Math.random()*exits.length),
