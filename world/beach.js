@@ -28,17 +28,35 @@ itemCommand("open", "bottle", "Open something", function(rest, player, item, gam
   player.write("Inside the bottle you find a message scawled up inside it. It says 'Help! I've been marroned on an island for the last 5 years! My only friend is a Walrus who i've decided to name 'Gregory' since I was needing company. Bring help and fish sticks for Gregory, since he likes those and I have run out.")
 });
 
+function findItem(room, name) {
+  return _.find(room.items, function(item) { return item.name == 'boat'; });
+}
 
 itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) {
     var room = player.getCurrentRoom();
-    var boat = _.find(room.items, function(item) { return item.name == 'boat'; });
+    var boat = findItem(room, "boat");
     
     if(boat) {
         boat.name = 'sailboat';
         boat.short = 'A boat with a sail';
         boat.description = 'a boat with a sail';
-        player.write('Now the boat has a sail. Type "sail" to ... er... sail.');
+        player.write('Now the boat has a sail. Type "sail" to sail into the ocean.');
     } else {
         player.write('Use the sail with what?');
+    }
+});
+
+command('sail', function(rest, player, game) {
+    var room = player.getCurrentRoom();
+    var boat = findItem(room, "sailboat");
+    
+    player.write(room);
+    player.write(boat);
+    
+    if(room.name == "beach" && boat != null) {
+      player.write('You sail off and appear...');
+      player.setCurrentRoom('sea');
+    } else {
+      player.write('Sail in what, exactly?');
     }
 });
