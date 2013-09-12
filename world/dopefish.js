@@ -5,8 +5,8 @@ var dopefish = character('dopefish', {
 });
 
 handler('tick', function () {
-  // every 30 minutes on average
-  if (Math.random() * 30 < 1) {
+  // every 300 seconds on average
+  if (Math.random() * 3 < 1) {
     var room = dopefish.getCurrentRoom(),
         exits = _.keys(room.exits),
         i = Math.floor(Math.random()*exits.length),
@@ -14,19 +14,15 @@ handler('tick', function () {
     
     var roomPlayers = room.getPlayers();
     
-    for(var i = 0; i < roomPlayers.length; i++)
-    {
-      roomPlayers[i].write("The dopefish says \"Duh!\"");
-    }
+    var i = (Math.random() * roomPlayers.length);
+    
+    roomPlayers[i].write("The dopefish says \"Duh!\"");
+    roomPlayers[i].display.show('http://pressthebuttons.typepad.com/photos/uncategorized/dopefish.png');
   }
 });
 
-handler("all", function(e) {
-  var room = dopefish.getCurrentRoom();
-  room.broadcast(e);
-})
-
-itemCommand("touch", "dopefish", null, function (game, player, item) {
-    player.write("You touch the dopefish and die :(");
-    //player.getCurrentRoom().broadcast(player.name + ' is admiring themself in the ' + item.name, player);
+handler('playerTalk', function (player, message) {
+  if (player.getCurrentRoom() === dopefish.getCurrentRoom() && dopefish !== player) {
+    dopefish.execute('say WAAAARGH');
+  }
 });
