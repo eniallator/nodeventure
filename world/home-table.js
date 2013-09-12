@@ -21,7 +21,7 @@ player.display.eval(function(){
             'transition: transform 0.5s; -webkit-transition: -webkit-transform 0.5s; -moz-transition: -moz-transform 0.5s; -o-transition: -o-transform 0.5s;' +
         '}' +
         'img#table.flipped {' +
-            'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' +
+            'transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg);' + 
         '}'
     );
 });
