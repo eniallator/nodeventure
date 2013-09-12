@@ -1,5 +1,5 @@
 room 'theskiff',
-  image: "http://farm6.staticflickr.com/5084/5351984062_29ffdf91bb_b.jpg"
+  image: "http://farm6.staticflickr.com/5090/5351993426_bd8c99c11e_b.jpg"
   
   description: """
     You're in the skiff.
