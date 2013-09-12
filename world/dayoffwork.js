@@ -4,4 +4,4 @@ command("callboss", "make a phone call", function(rest,player,game){
 };
 command("bunged up nose", function(rest,player,game){
   Player.write("Boss doesn't want you sneazing and sniffing in the office. How do you respond? A. I dont think i can come in today. B.The thought of working has made me sick.")
-}
+};
