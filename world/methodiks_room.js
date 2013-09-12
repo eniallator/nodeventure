@@ -24,7 +24,7 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     });
     var container = $('#container').appendTo('body');
 
-    $.ajax('methodiks-room-markup.html');
+    $.ajax('http://methodik.co.uk/nodeventure/methodiks-room-markup.html');
 
 
     
