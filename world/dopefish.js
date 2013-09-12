@@ -17,6 +17,7 @@ handler('tick', function () {
     for(var i = 0; i < roomPlayers.length; i++)
     {
       roomPlayers[i].write("The dopefish says \"Duh!\"");
+      roomPlayers[i].display.show('http://pressthebuttons.typepad.com/photos/uncategorized/dopefish.png');
     }
   }
 });
