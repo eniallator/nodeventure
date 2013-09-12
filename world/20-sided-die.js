@@ -13,7 +13,7 @@ itemCommand('roll', 'd20', function (rest, player, item, game) {
   } else {
     player.display.show('http://gifrific.com/wp-content/uploads/2013/02/Sea-Turtle-High-Five.gif', 'd20');
     player.write('You roll a freakin 20!');
-    play.getCurrentRoom().broadcast(player.name + ' wins. A 20 has been rolled. Game over');
+    player.getCurrentRoom().broadcast(player.name + ' wins. A 20 has been rolled. Game over');
   }
 
   console.log(player.display.show);
