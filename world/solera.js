@@ -22,7 +22,13 @@ room("volcano", {
 
 
 
-
+room("swimmingpool", {
+  description: "You are standing by the edge of an indoor swimming pool. The water glints invitingly, you are reminded of happy childhood memories swimming with your friends. Large windows surround the room showing a view of a landscaped area and pathway outside. The only exit is the one you have entered from to the West. Nearby a towel hangs over a metal railing. On a chair is a spare swimsuit which looks like it would fit you. Lying on the tiled floor are a pair of armbands.",
+  
+  exits: {
+    west: "volcano"
+  }
+});
 
 
 
