@@ -33,6 +33,11 @@ handler("drop:mirror", function (game, player, item) {
   preventDefault();
 });
 
+handler("throw:mirror", function (game, player, item) {
+    player.write("The mirror breaks into even more pieces than an iPhone.");
+    preventDefault();
+});
+
 handler("describeItem:mirror", function (game, player, item) {
   player.write("A mirror hangs on the wall");
 });
