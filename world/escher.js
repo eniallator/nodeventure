@@ -1,7 +1,7 @@
-var hammer = character('mc-hammer', {
+var hammer = character('mc-escher', {
 
   location: 'home',
-  description: 'U Can\'t Touch This.'
+  description: 'Goin\' up the stairs and going down the stairs, now going up the sideways stairs.'
 
 });
 
@@ -16,10 +16,9 @@ handler('tick', function () {
     
     hammer.execute('go ' + exit);
     
-    room.broadcast('Stop');
-    room.broadcast('Hammer Time');
+    room.broadcast('Going up the stairs and going down the stairs.');
     
-    room.display.show('http://1.bp.blogspot.com/-q20NhQKVNXk/T88T1y_rCqI/AAAAAAAAAPQ/760_Tip2bBM/s200/MC_Hammer_gif.gif');
+    room.display.show('http://24.media.tumblr.com/tumblr_lgftr4ArdG1qfaiwro1_400.gif');
     
   }
 
