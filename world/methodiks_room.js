@@ -28,22 +28,33 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	position: 'absolute',
     	bottom: 50,
     	left: 0,
-    	backround: 'whitesmoke'
+    	background: '#7affca'
     })
     $('#circle2').css({
     	position: 'absolute',
     	bottom: 50,
     	left: '50%',
     	marginLeft: '-15%',
-    	background: 'lightgrey'
+    	background: '#233d52'
     });
     $('#circle3').css({
     	position: 'absolute',
     	bottom: 50,
     	right: 0,
-    	background: 'red'
+    	background: '#b1c7bc'
     });
 
+    $('#circle1').click(function() {
+    	$('<div id="circle4" class="circle"></div>').appendTo('body');
+    	$('#circle4').css({
+    		position: 'absolute',
+    		bottom: 200,
+    		left: 20,
+    		background: 'pink'
+    	});
+    	alert('you are in Methodiks room');
+
+    })
 
     
 

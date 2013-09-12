@@ -21,7 +21,7 @@ handler('tick', function () {
 });
 
 handler('playerTalk', function (player, message) {
-  if (player.getCurrentRoom() === dopefish.getCurrentRoom() && dopefish !== player) {
-    //dopefish.execute('say WAAAARGH');
+  if (player.getCurrentRoom() === dopefish.getCurrentRoom() && dopefish !== player && /shut ?up/i.test(message)) {
+    dopefish.execute('say I am a very useful creature. Admire my lovely green skin!');
   }
 });
