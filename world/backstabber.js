@@ -11,9 +11,10 @@ var backstabber = character('backstabber', {
   description: 'the backstabber aka backstabberi'
 });
 
-var stupid_sentences = [
-  ""
-];
+var dictionary = {};
+
+dictionary.verbs = ["says", "thinks", "swears"];
+dictionary.adjectives= ["an asshole", "a backstabber as well", "a big liar", "a sock sniffer"];
 
 handler('tick', function () {
   // every 10 seconds on average
@@ -38,8 +39,6 @@ handler('tick', function () {
       }
     });
 
-
-
     if ( players_in_room.length < 2 ) {
       return backstabber.execute('go ' + exit);
     }
@@ -52,15 +51,14 @@ handler('tick', function () {
     guys = players_in_room.slice(0, players_in_room.length - 1).join(', ') + last_player;
 
     room.broadcast("backstabber says: " + guys + " I've something very important to tell to each and everyone of you");
+    room.broadcast("backstabber says: you can teach me more vocabulary with \"teach verb [verb]\" or \"teach adjective [adjective]\"");
 
     players_in_room.forEach(function(player, i) {
       var who = i - 1
-        , verbs = ["says", "thinks", "swears"]
-        , adjectives= ["an asshole", "a backstabber as well", "a big liar", "a sock sniffer"]
         , verb, adjective;
 
-      verb = verbs[Math.floor(Math.random() * verbs.length)];
-      adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+      verb = dictionary.verbs[Math.floor(Math.random() * dictionary.verbs.length)];
+      adjective = dictionary.adjectives[Math.floor(Math.random() * dictionary.adjectives.length)];
 
       if (who < 0 ) who = players_in_room.length - 1;
 
@@ -68,6 +66,21 @@ handler('tick', function () {
     });
 
     backstabber.execute('go ' + exit);
+  }
+});
+
+command('teach', function (rest, player, game) {
+  var attributes = rest.trim().split(' ')
+    , what = attributes[0].trim() + "s"
+    , words = attributes.slice(1).join('');
+
+  if ( dictionary[what] ) {
+    dictionary[what].push(words);
+    player.write("Backstabbers says to you: Thank you for your " + what);
+  }
+
+  else {
+    player.write("I don't know what's a/n " + what);
   }
 });
 
