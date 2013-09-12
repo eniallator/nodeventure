@@ -48,9 +48,9 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	$('<div id="circle4" class="circle"></div>').appendTo('body');
     	$('#circle4').css({
     		position: 'absolute',
-    		bottom: 300,
-    		left: 0,
-    		background: 'white'
+    		bottom: 200,
+    		left: 20,
+    		background: 'pink'
     	});
 
     })
