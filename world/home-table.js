@@ -7,3 +7,7 @@ item('home', 'table', {
 itemCommand('look', 'table', function(rest, player, item, game){
     player.write('The table looks back at you, lovingly.')
 });
+
+itemCommand('use', 'table', function(rest, player, item, game){
+    player.write('You climb on the table and proclaim your power.')
+});
