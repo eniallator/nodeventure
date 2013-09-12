@@ -44,6 +44,11 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	background: '#b1c7bc'
     });
 
+    $('#circle1').click(function() {
+    	$('<div id="circle4" class="circle"></div>').appendTo('body');
+    	$('#circle4').fadeIn();
+
+    })
 
     
 
