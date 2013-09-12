@@ -1,5 +1,5 @@
 room('methodiks_room', {
-  description: "All you have to do is click on the circles",
+  description: "All you have to do is click on the circles, at the moment there aren't any circles though...",
   exits: {
     west: 'alley',
     east: 'temple',
