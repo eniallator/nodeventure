@@ -36,7 +36,6 @@ handler("drop:mirror", function (game, player, item) {
 itemCommand("use", "mirror", null, function (game, player, item) {
     player.write("You realise just how beautiful you are.");
     player.getCurrentRoom().broadcast(player.name + ' is admiring themself in the ' + item.name, player);
-    preventDefault();
 });
 
 handler("describeItem:mirror", function (game, player, item) {
