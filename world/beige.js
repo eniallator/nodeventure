@@ -33,7 +33,7 @@ handler("drop:mirror", function (game, player, item) {
   preventDefault();
 });
 
-handler("use:mirror", function (game, player, item) {
+itemCommand("use", "mirror",, function (game, player, item) {
     player.write("The mirror breaks into even more pieces than an iPhone.");
     preventDefault();
 });
