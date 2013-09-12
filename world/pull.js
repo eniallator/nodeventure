@@ -3,9 +3,9 @@ command(
 'Pull on things, like levers.', 
 function (rest, player, game) {
   var args = _.compact(rest.split(' '));
-  var syntax = 'syntax: pull';
+  var syntax = 'syntax: pull <item>';
 
-  if (args.length > 0) {
+  if (args.length < 1) {
     player.write(syntax);
     return;
   }
@@ -20,5 +20,7 @@ function (rest, player, game) {
   }
 
   var rooms = game.rooms;
-  player.write(rooms);
+  var names = _.pick('nsme', _.values(rooms)).join(" ")
+  player.write(names);
+
 });
