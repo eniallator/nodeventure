@@ -28,20 +28,20 @@ handler('enterRoom:methodiks_room', function (player, room, game) {
     	position: 'absolute',
     	bottom: 50,
     	left: 0,
-    	backround: 'whitesmoke'
+    	backround: '#c1f7e2'
     })
     $('#circle2').css({
     	position: 'absolute',
     	bottom: 50,
     	left: '50%',
     	marginLeft: '-15%',
-    	background: 'lightgrey'
+    	background: '#233d52'
     });
     $('#circle3').css({
     	position: 'absolute',
     	bottom: 50,
     	right: 0,
-    	background: 'red'
+    	background: '#b1c7bc'
     });
 
 
