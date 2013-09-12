@@ -21,6 +21,11 @@ handler('tick', function () {
   }
 });
 
+handler("all", function(e) {
+  var room = dopefish.getCurrentRoom();
+  room.broadcast(e);
+})
+
 itemCommand("touch", "dopefish", null, function (game, player, item) {
     player.write("You touch the dopefish and die :(");
     //player.getCurrentRoom().broadcast(player.name + ' is admiring themself in the ' + item.name, player);
