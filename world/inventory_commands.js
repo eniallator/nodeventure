@@ -72,35 +72,3 @@ command('i', "Display a list of all the items you're carrying.", function (rest,
 command('use', 'Example: use lemon',function (rest, player, item) {
   player.write("Can't use " + rest);
 });
-<<<<<<< HEAD
-
-itemCommand('use','gemerald', function(rest, player, item) {
-    player.write('you used ' + item.name);
-});
-
-itemCommand('use','sword', function(rest, player, item) {
-    player.write('you used ' + item.name);
-});
-
-itemCommand('use', 'jetpack', function(rest, player, item){
-  player.write('You put the jetpack on and press the button marked \'LAUNCH\'');
-  player.getCurrentRoom().broadcast(player.name + ' used the jetpack and disappeared to parts unknown!', player);
-  var rooms = _.keys(game.rooms),
-  room = rooms[Math.floor(Math.random() * rooms.length)];
-  player.setCurrentRoom(room);
-  player.write('You landed in a strange new place...');
-  player.execute('look');
-});
-
-itemCommand('use','lemon', function (rest, player, item) {
-  player.write('you make lemonade');
-  player.getCurrentRoom().broadcast(player.name + ' makes lemonade', player);
-});
-
-itemCommand('drink','rum', function (rest, player, item) {
-  player.write('you drank some disgusting ' + item.name);
-  player.getCurrentRoom().broadcast(player.name + ' drank some disgusting ' + item.name, player);
-  player.write({'effect': 'toggleBlur'});
-});
-=======
->>>>>>> 2153c8e7a1f940eed3bfacc38d5201a388241670
