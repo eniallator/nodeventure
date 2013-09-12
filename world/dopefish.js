@@ -14,7 +14,9 @@ handler('tick', function () {
     
     var roomPlayers = room.getPlayers();
     
-    var i = (Math.random() * roomPlayers.length);
+    var i = parseInt(Math.random() * roomPlayers.length);
+    
+    room.broadcast("debug:" + i);
     
     roomPlayers[i].write("The dopefish says \"Duh!\"");
     roomPlayers[i].display.show('http://pressthebuttons.typepad.com/photos/uncategorized/dopefish.png');
