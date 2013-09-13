@@ -13,6 +13,8 @@ item('butterfly', 'red vial', {
   respawnTime: 60,
   width:60,
   height:100,
+  top:350,
+  left:70,
   short: 'a red vial',
   description: 'It is a red vial and you can not tell what it is.'
 });
@@ -22,6 +24,8 @@ item('butterfly', 'purple vial', {
   respawnTime: 60,
   width:60,
   height:100,
+  top:350,
+  left:145,
   short: 'a purple vial',
   description: 'It is a purple vial. It looks healthy.'
 });
