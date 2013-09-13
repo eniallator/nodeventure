@@ -29,8 +29,6 @@ handler('tick', function () {
       , last_player = ""
       , guys;
 
-    console.log(players);
-
     players.forEach(function(player_name) {
       var player = room.game.players[player_name];
       if ( player_name === "backstabber") return;
