@@ -3,8 +3,7 @@ room('butterfly', {
   exits: {
     south: 'home',
     north: 'forest'
-  },
-  image: 'myroom.jpg'
+  }
 
 });
 
