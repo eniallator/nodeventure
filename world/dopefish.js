@@ -1,6 +1,6 @@
 var dopefish = character('dopefish', {
   location: 'beige',
-  description: 'half man, half monkey,half bear and all yeti. He seems to like the snow.'
+  description: 'the second-dumbest creature in the universe'
 });
 
 handler('tick', function () {
