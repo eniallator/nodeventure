@@ -8,7 +8,7 @@ var hammer = character('mc-hammer', {
 handler('tick', function () {
 
   // every 30 minutes on average
-  if (Math.random() * 3 < 1) {
+  if (Math.random() * 30 < 1) {
     var room = hammer.getCurrentRoom(),
         exits = _.keys(room.exits),
         i = Math.floor(Math.random()*exits.length),
@@ -19,7 +19,7 @@ handler('tick', function () {
     
     room.display.show('http://1.bp.blogspot.com/-q20NhQKVNXk/T88T1y_rCqI/AAAAAAAAAPQ/760_Tip2bBM/s200/MC_Hammer_gif.gif');
   
-    //hammer.execute('go ' + exit);
+    hammer.execute('go ' + exit);
 
   }
 
