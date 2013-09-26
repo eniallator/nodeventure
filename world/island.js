@@ -130,7 +130,7 @@ itemCommand("open", "chest", "Open something", function(rest, player, item, game
 });
 
 itemCommand('use', 'spear', 'Use something.', function(rest, player, item, game) {
-  player.getCurrentRoom().id = 'island_beach' {
+  if (player.getCurrentRoom().id == 'island_beach') {
     var number = Math.ceil(Math.random() * 5);
     if (number >=4) {
       player.write("You jump into the sea with the fishing spear, and manage to spear a fish. (which you stuff into your inventory)");
