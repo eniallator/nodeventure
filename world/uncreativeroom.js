@@ -1,6 +1,6 @@
 room('The uncreative room', {
   description: "A bleak dark room, void of anything withholding or substantial. Being here creates a feeling that imagination and creativity is sapped away moment by moment.",
-  image: "http://farm9.staticflickr.com/8116/8661273072_50e771036e.jpg",
+  image: "http://www.koreanbeacon.com/wp-content/uploads/2011/06/20-lee_ufan_naoshima_museum_silence_room.jpg",
   exits: { east: 'beach' },
   items: [
     {
