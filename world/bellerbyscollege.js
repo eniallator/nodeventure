@@ -3,5 +3,5 @@ room('bellerbyscollege', {
   exits: {
     furthersouth: 'home'
   },
-  image: 'myroom.jpg'
+  image: 'http://www.bellerbys.com/-/media/Bellerbys%20Site/Images/Locations/Brighton/Brighton_location_campus_220x147.jpg'
 });
