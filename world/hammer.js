@@ -42,7 +42,6 @@ command('touch', function (rest, player, game) {
   ];
 
   if (player.getCurrentRoom() === hammer.getCurrentRoom() && rest == hammer.name) {
-
     // Choose a random first part
     var i = parseInt(Math.random() * firstParts.length);
     player.write(firstParts[i]);
