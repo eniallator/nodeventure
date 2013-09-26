@@ -1,24 +1,24 @@
 room('mud', {
-  description: "This room is daubed in beige. You start feeling sleepy.",
+  description: "This is a murky world, where all sorts of beings hide. Some of them invisible, and others just plain strange!",
   image: "http://cabinetmagazine.org/issues/2/beige.jpg",
-  exits: { east: 'home', south: 'beach path', north: 'methodiks_room', west: 'spinning_cube'},
+  exits: { east: 'home', south: 'cube, north: 'camera', west: 'butterfly'},
   items: [
     {
-      name: 'brush',
-      short: 'a brush',
-      description: 'A brush. it is branded with a \'B&Q\' logo. There is beige paint on it',
+      name: 'threeheads',
+      short: 'friendly creature',
+      description: 'Three heads wants to shake your hand!',
       respawnTimer: 60
     },
     {
-      name: 'paint',
-      short: 'a pot of paint',
-      description: 'A pot of beige paint. it has been opened.',
+      name: 'laughter',
+      short: 'an invisible laugh',
+      description: 'The laugh is coming your way.',
       respawnTimer: 60
     },
     {
-      name: 'mirror',
-      short: 'a small mirror',
-      description: 'A small and perfectly inadequate mirror',
+      name: 'echo',
+      short: 'a reverberation',
+      description: 'Makes you shake!',
       respawnTimer: 60
     }
   ]
