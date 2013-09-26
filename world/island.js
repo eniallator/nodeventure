@@ -90,31 +90,31 @@ galleon_captain = character('galleon_captain', {
   description: 'The remains of the Galleons Captain, not alive, yet also not quite dead.'
 });
 
-item('chest', 'island_treehouse', {
+item('island_treehouse', 'chest', {
   short: 'a wooden chest',
   description: 'A wooden chest, seems to be where to marrooned guy keeps his things.',
   respawnTimer: 0
 });
 
-item('lobster_pot', 'island_treehouse', {
+item('island_treehouse', 'lobster_pot', {
   short: 'a lobster pot',
   description: 'Something to take fishing later...',
   respawnTimer: 0
 });
 
-item('crashed_plane', 'island_crashsite', {
+item('island_crashsite', 'crashed_plane', {
   short: 'The remains of a downed small aircraft.',
   description: 'The remains of a downed small aircraft, several seats and luggage are still thrown around',
   respawnTimer: 0
 });
 
-item('diving_suit', 'island_crashsite', {
+item('island_crashsite', 'diving_suit', {
   short: 'A diving suit.',
   description: 'A diving suit, and it still seems to be intact.',
   respawnTimer: 0
 });
 
-item('treasure', 'galleon_captians_quarters', {
+item('galleon_captians_quarters', 'treasure', {
   short: 'Some Treasure',
   description: 'Some treasure, could be useful to bribe someone, or something.',
   respawnTimer: 0
