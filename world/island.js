@@ -81,7 +81,7 @@ maroonedguy = character('maroonedguy', {
 });
 
 walrus = character('walrus', {
-  location: 'walrus_beach',
+  location: 'island_walrus_beach',
   description: 'An old Walrus, looking past his prime, yet at the same time could be vicious. Around his neck is a collar, and a wooden name tag with "Gregory" scrathed on it.'
 });
 
