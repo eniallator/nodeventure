@@ -18,3 +18,28 @@ command('kick', 'kick some ones ass', function (rest, player, game) {
   player.broadcast(player.name + ' kicks ' + otherPlayer.name + ' you out the ' + exit + ' exit. OMG!');
   
 });
+
+command('punch', 'Violence never solved anything but it\'s still worth a try.', function (rest, player, game) {
+  var room = player.getCurrentRoom();
+  var otherPlayer = room.getPlayer(rest);
+  
+  if (!otherPlayer) {
+    player.write(rest + " isn't here! You're shadow-boxing dude.");
+    return;
+  }
+
+  var messages = [
+    'in an ungentlemanly manner.',
+    'with some resolve but little effect.',
+    'without any discernable effect.',
+    'in slow motion while the Rocky theme plays in the background.'
+    ];
+  //var msgNum = _.random(messages.length);
+  var msgNum = Math.floor(Math.random()*messages.length);
+  var msg = messages[msgNum];
+
+  player.write('You punch ' + otherPlayer.name + ' ' + msg);
+  otherPlayer.write(player.name + ' punches you' + msg);
+
+});
+

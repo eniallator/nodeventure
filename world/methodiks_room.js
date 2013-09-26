@@ -1,6 +1,7 @@
 room('methodiks_room', {
   description: "All you have to do is click on the circles, at the moment there aren't any circles though...",
   exits: {
+    north: 'bellerbyscollege',
     west: 'alley',
     east: 'temple',
     down: 'basement'

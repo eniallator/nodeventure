@@ -1,7 +1,7 @@
 room('spinning_cube', {
   description: "You're now in the spinning cube. Everything is black and white. Everything spins slower or faster.",
   exits: {
-    west: 'home',
+    west: 'the_uncreative_room',
     east: 'sea',
     north: 'tell',
     south: 'beach',
