@@ -40,7 +40,7 @@ function (rest, player, game) {
     return;
   }
 
-  destPlayer.inventory.push(itemToGive);
+  destPlayer.receive(player, itemToGive);
 
   player.inventory = _.without(player.inventory, itemToGive);
 
