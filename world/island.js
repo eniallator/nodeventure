@@ -44,6 +44,12 @@ room('island_crashsite', {
   exits: { north: 'island_inland' },
 });
 
+room('sea', {
+  description: "your sailing the blue ocean, lands ahoy in the distance",
+  image: "http://farm6.staticflickr.com/5450/9165870629_bbbbce9042.jpg",
+  exits: { south: 'sea', north: 'beach', east: 'island', west: 'sea', down: 'under_sea' },
+});
+
 room('under_sea', {
   description: "You dive off the boat and take a look underwater. As fishs swim past you, you spy in the disance depths what looks like a sunken Galleon. You ponder returning here when you have a diving suit.",
   exits: { up: 'sea' },
