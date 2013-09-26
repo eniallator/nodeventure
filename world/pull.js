@@ -24,5 +24,5 @@ function (rest, player, game) {
 });
 
 command('zzz', 'Just a test.', function (rest, player, game) {
-  player.setRoom('quantum_entrance');
+  player.setCurrentRoom('quantum_entrance');
 });
