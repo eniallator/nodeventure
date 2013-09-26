@@ -1,7 +1,7 @@
 room('bellerbyscollege', {
   description: "Welcome to Bellerbys College.",
   exits: {
-    south: 'methodiks_room',
+    furthersouth: 'home'
   },
   image: 'myroom.jpg'
 });
