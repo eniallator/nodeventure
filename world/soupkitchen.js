@@ -1,7 +1,7 @@
 room('soupkitchen', {
   description: "In the soup kitchen, the chef is making plenty of delicious soup. He's also growing lots of herbs, which he is watering. The chef gives you a glass eye.",
   image: "http://cabinetmagazine.org/issues/2/beige.jpg",
-  exits: { east: 'home', north: 'dollhouse'},
+  exits: { east: 'home', north: 'dollhouse' along: 'garden'},
   items: [
     {
       name: 'threeheads',
