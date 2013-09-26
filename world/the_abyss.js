@@ -4,8 +4,8 @@ room('the_abyss', {
   exits: { up: 'home'},
   items: [
     {
-      name: 'A BFG',
-      short: 'a bfg',
+      name: 'BFG',
+      short: 'A BFG',
       description: 'A big, frightening gun. Or a big, french gun. I have no idea what the F stands for...',
       respawnTimer: 60
     },
