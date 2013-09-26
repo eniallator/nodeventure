@@ -1,7 +1,42 @@
+var dance = function(player, game) {
+  
+  // Do a dance
+  player.write('This is just an example');
+  
+}
+
+var monkey = function(player, game) {
+  
+  // Give the player a Monkey
+  player.write('This is just an example');
+  
+}
+
+var giveWater = function(player, game) {
+  
+  // Give the player some water
+  player.write('This is just an example');
+  
+}
+
+var showMeSomething = function(player, game) {
+  
+  return {
+    'dance' : ['I would like to see a dance?', dance],
+    'monkey' : ['I would like to see a monkey?', monkey]
+  }
+  
+}
+
 var hammer = character('mc-hammer', {
 
   location: 'home',
-  description: 'U Can\'t Touch This.'
+  description: 'U Can\'t Touch This.',
+  talk: {
+    'show' : ['I want to see something', showMeSomething],
+    'dance' : ['Just dance', dance],
+    'water' : ['I want water', giveWater]
+  }
 
 });
 
