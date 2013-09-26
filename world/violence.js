@@ -28,7 +28,14 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
     return;
   }
 
-  var msg = '';
+  var messages = [
+    'in an ungentlemanly manner.',
+    'with some resolve but little effect.',
+    'without any discernable effect.'
+    'in slow motion while the Rocky theme plays in the background.'
+    ];
+  var msgNum = _.random(messages.length)
+  var msg = messages[msgNum];
 
   player.write('You punch ' + otherPlayer.name + ' ' + msg);
   otherPlayer.write(player.name + ' punches you' + msg);
