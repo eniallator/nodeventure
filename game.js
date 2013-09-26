@@ -241,7 +241,7 @@ _.extend(Player.prototype, {
     return this.health <= 0;
   },
   receive: function(giver, item) {
-    this.inventory[];
+    // this.inventory[];
     if (typeof this.onReceive == "function") {
       this.onReceive(giver, item);
     }
