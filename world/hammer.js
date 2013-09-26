@@ -24,7 +24,19 @@ var showMeSomething = function(player, game) {
   return {
     'dance' : ['I would like to see a dance?', dance],
     'monkey' : ['I would like to see a monkey?', monkey]
-  }
+  };
+  
+}
+
+var hammerTalk = function(player, game) {
+  
+  player.write('I\'m MC Hammer, here\'s my story .. blah blah blah.');
+  
+  return {
+    'show' : ['I want to see something', showMeSomething],
+    'dance' : ['Just dance', dance],
+    'water' : ['I want water', giveWater]
+  };
   
 }
 
@@ -32,11 +44,7 @@ var hammer = character('mc-hammer', {
 
   location: 'home',
   description: 'U Can\'t Touch This.',
-  talk: {
-    'show' : ['I want to see something', showMeSomething],
-    'dance' : ['Just dance', dance],
-    'water' : ['I want water', giveWater]
-  }
+  talk: hammerTalk
 
 });
 

@@ -14,7 +14,7 @@ command('talk', function (rest, player, game) {
 		if (typeof target.talk !== undefined) {
 			
 			// Default to the biggining
-			conversationLevel = target.talk;
+			conversationLevel = target.talk(player, game);
 			
 			// Is this a reply from the user?
 			if (reply) {
