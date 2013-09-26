@@ -27,8 +27,26 @@ handler('tick', function () {
 
 command('touch', function (rest, player, game) {
 
+  var firstParts = [
+    "I told you, homeboy",
+    "Yeah, that's how we living and you know",
+    "Look at my eyes, man",
+    "Yo, let me bust the funky lyrics",
+    "Yo, I told you",
+    "Why you standin' there, man?",
+    "Yo, sound the bell, school is in, sucka!",
+    "Yeah!",
+    "I told you!",
+    "Too hype!",
+    "Get way outta here!"
+  ];
+
   if (player.getCurrentRoom() === hammer.getCurrentRoom() && rest == hammer.name) {
-    player.write("You really can't touch this!");
+
+    // Choose a random first part
+    var i = parseInt(Math.random() * firstParts.length);
+    player.write(firstParts[i]);
+    player.write("You can't touch this!");
   }
 
 });
