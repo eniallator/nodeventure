@@ -1,5 +1,5 @@
 var cooker = character('cooker', {
-  location: 'soupkitchen',
+  location: 'soupkitchens',
   description: 'cooker without herbs',
   talk: ['water', 'I need some water', giveWater],
   onReceive: function(player, item) {
@@ -21,13 +21,18 @@ function giveWater(player) {
   player.inventory.push({
     name: "cookerwater",
     description: "water the cooker gave to you",
+    short: "water from the cooker"
   });
 }
 
 itemCommand("pour", "water", function(rest, player) {
   var room = player.getCurrentRoom();
   if (room.name == "garden") {
-    player.write("Some herbs have unveiled");
+    player.write("Some herbs have unveiled you take them.");
+    room.pourWater(player);
+  }
+  else{
+    player.write("I don't think that's gonna work here.")
   }
 });
 
