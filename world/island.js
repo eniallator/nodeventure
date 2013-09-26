@@ -128,3 +128,21 @@ itemCommand("open", "chest", "Open something", function(rest, player, item, game
     description: 'A fishing spear'
   });
 });
+
+itemCommand('use', 'spear', 'Use something.', function(rest, player, item, game) {
+  player.getCurrentRoom().id = 'island_beach' {
+    var number = Math.ceil(Math.random() * 5);
+    if (number >=4) {
+      player.write("You jump into the sea with the fishing spear, and manage to spear a fish. (which you stuff into your inventory)");
+      player.inventory.push({
+        name: 'fish',
+        short: 'a freshly caught fish',
+        description: 'How lucky where you to catch a nice fish like that.'
+      });
+    } else {
+      player.write("You thrown the spear, but alas, you miss the fish... rubbish");
+    }
+  } else {
+    player.write("And what where you planning on doing with it... may I ask?");
+  }
+}
