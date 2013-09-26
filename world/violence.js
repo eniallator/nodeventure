@@ -38,7 +38,7 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
   var msgNum = Math.floor(Math.random()*messages.length);
   var msg = messages[msgNum];
 
-  player.write('You punch ' + otherPlayer.name + ' face ' + msg);
+  player.write('You punch ' + otherPlayer.name + ' ' + msg);
   otherPlayer.write(player.name + ' punches you' + ' ' + msg);
 
 });
