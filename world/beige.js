@@ -2,10 +2,7 @@ room('beige', {
   description: "This room is daubed in beige. You start feeling sleepy.",
   image: "http://cabinetmagazine.org/issues/2/beige.jpg",
 <<<<<<< HEAD
-  exits: { east: 'home', south: 'beachpath', north: 'methodiks_room', west: 'spinning_cube', furtherwest: 'hove-w'},
-=======
-  exits: { east: 'home', south: 'beachpath', north: 'methodiks_room', west: 'spinning_cube', 4thdup: 'hove-w', southeast: 'ocean'},
->>>>>>> e5a1af89026b2dfd700b3338e1a390c1079f922f
+  exits: { east: 'home', south: 'beachpath', north: 'methodiks_room', west: 'spinning_cube', furtherwest: 'hove-w', southeast: 'ocean'},
   items: [
     {
       name: 'brush',
