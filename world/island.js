@@ -96,19 +96,19 @@ item('island_treehouse', 'chest', {
   respawnTimer: 0
 });
 
-item('island_treehouse', 'lobster_pot', {
+item('island_treehouse', 'pot', {
   short: 'a lobster pot',
   description: 'Something to take fishing later...',
   respawnTimer: 0
 });
 
-item('island_crashsite', 'crashed_plane', {
-  short: 'The remains of a downed small aircraft.',
+item('island_crashsite', 'plane', {
+  short: 'Crashed Plane.',
   description: 'The remains of a downed small aircraft, several seats and luggage are still thrown around',
   respawnTimer: 0
 });
 
-item('island_crashsite', 'diving_suit', {
+item('island_crashsite', 'divingsuit', {
   short: 'A diving suit.',
   description: 'A diving suit, and it still seems to be intact.',
   respawnTimer: 0
