@@ -10,7 +10,7 @@ command('kick', 'kick some ones ass', function (rest, player, game) {
   var i = Math.floor(Math.random()*exits.length);
   var exit = exits[i];
 
-  player.write('you kick ' + otherPlayer.name + ' you out the ' + exit + ' exit. LOLZ');
+  player.write('you kick ' + otherPlayer.name + ' you out the ' + exit + ' exit. ROFLLOLZOR');
 
   otherPlayer.write(player.name + ' kicks you out the ' + exit + ' exit. How dare they?');
   otherPlayer.execute("go " + exit);
