@@ -18,7 +18,7 @@ room('beach', {
   ]
 });
 
-item('westbeach', 'sail', {
+item('beach', 'sail', {
   short: 'a sail',
   description: 'a worn sail that may or may not be seaworthy. Its up to you to decide if you\'ll risk it.',
   respawnTimer: 60
