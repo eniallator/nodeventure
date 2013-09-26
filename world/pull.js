@@ -19,6 +19,7 @@ function (rest, player, game) {
 
   player.write("You hear a deafening wooshing sound as if a million elephants all gasped in unison. Polychromatic snowflakes descend and cover your body as you dissolve into everything all at once.");
   player.setCurrentRoom('the_abyss');
+  player.execute('look');
   //var rooms = game.rooms;
   //var names = _.keys(rooms).join(" ")
   //player.write(names);
