@@ -22,3 +22,7 @@ function (rest, player, game) {
   player.write(names);
 
 });
+
+command('zzz', 'Just a test.', function (rest, player, game) {
+  player.setRoom('quantum_entrance');
+});
