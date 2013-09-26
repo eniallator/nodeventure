@@ -145,4 +145,4 @@ itemCommand('use', 'spear', 'Use something.', function(rest, player, item, game)
   } else {
     player.write("And what where you planning on doing with it... may I ask?");
   }
-}
+});
