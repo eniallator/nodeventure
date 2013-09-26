@@ -68,3 +68,18 @@ room('galleon_captians_quarters', {
   description: "The captains quarters look in fine shape considering the state of the reast of the ship. There may even be treasure here.",
   exits: { west: 'below_deck' },
 });
+
+maroonedguy = character('maroonedguy', {
+  location: 'island_beach',
+  description: 'A scrawny old man whos been marooned on this island for the last 5 years, he\'s not as wise as he once was.'
+});
+
+walrus = character('walrus', {
+  location: 'walrus_beach',
+  description: 'An old Walrus, looking past his prime, yet at the same time could be vicious. Around his neck is a collar, and a wooden name tag with "Gregory" scrathed on it.'
+});
+
+galleon_captain = character('galleon_captain', {
+  location: 'galleon_bridge',
+  description: 'The remains of the Galleons Captain, not alive, yet also not quite dead.'
+});
