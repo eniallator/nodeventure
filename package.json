@@ -12,12 +12,14 @@
     "nodeventure.asyncjs.com"
   ],
   "dependencies": {
-    "underscore": "1.3.3",
+    "underscore": "1.5.2",
     "socket.io": "0.9.6",
     "express": "2.5.10",
     "coffee-script": "1.3.3",
     "optimist": "0.3.4",
-    "trumpet": "0.3.0"
+    "trumpet": "0.3.0",
+    "request": "2.27.0",
+    "jsdom": "0.8.5"
   },
   "devDependencies": {
     "yaml-front-matter": "~1.0.3"

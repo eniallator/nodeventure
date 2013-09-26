@@ -199,16 +199,10 @@ handler('enterRoom', function (player, room, game) {
 
 handler("describeItem:*", function (game, player, item) {
   if (item.image) {
-    var width='50%',
-      height='50%';
-    if (item.width) {
-      width=item.width+'px';
-    };
-    if (item.height) {
-      height=item.height+'px';
-    };
+    var top = parseInt(Math.random() * (300 - 0), 10),
+      left = parseInt(Math.random() * (400 - 0), 10);
     // TODO: Position so we can see more than one item
-    player.display.show(item.image, item.name, {width: width, height: height});
+    player.display.show(item.image, item.name, {width:  item.width || '50%', height: item.height || '50%', top: item.top || top, left: item.left || left});
   }
 });
 

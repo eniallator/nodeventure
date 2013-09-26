@@ -1,0 +1,6 @@
+---
+image: "http://www.destructoid.com/ul/247496-assassin-s-creed-iv/AC4BF_SC_SP_06_CityGunplay-620x.jpg"
+exits:
+  northwest: beige
+---
+sun sunny and sand. no sony. just sandy. fine yet rough grains of sand. and ocean of little fine grains that get directly between your cloths and skin. And the air in your lungs has just gone to another room

@@ -18,7 +18,7 @@ room('beach', {
   ]
 });
 
-item('beige', 'sail', {
+item('westbeach', 'sail', {
   short: 'a sail',
   description: 'a worn sail that may or may not be seaworthy. Its up to you to decide if you\'ll risk it.',
   respawnTimer: 60
@@ -35,7 +35,7 @@ function findItem(room, name) {
 itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) {
     var room = player.getCurrentRoom();
     var boat = findItem(room, "boat");
-    
+
     if(boat) {
         boat.name = 'sailboat';
         boat.short = 'a sailboat';
@@ -49,7 +49,7 @@ itemCommand('use', 'sail', 'Use something.', function(rest, player, item, game) 
 command('sail', function(rest, player, game) {
     var room = player.getCurrentRoom();
     var boat = findItem(room, "sailboat");
-    
+
     if(room.id == "beach" && boat != null) {
       player.write('You sail off and appear...');
       player.setCurrentRoom('sea');

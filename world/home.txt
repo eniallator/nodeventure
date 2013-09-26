@@ -5,5 +5,7 @@ exits:
   east: magnolia
   south: theskiff
   north: butterfly
+  furthernorth: bellerbyscollege
+  up: dollhouse
 ---
 You are in the Lab For the Recently Possible. A large table sits in the middle of the room around which geeks sit hard at work on some kind of text adventure...

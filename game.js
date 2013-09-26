@@ -239,6 +239,12 @@ _.extend(Player.prototype, {
   },
   isDead: function () {
     return this.health <= 0;
+  },
+  receive: function(giver, item) {
+    // this.inventory[];
+    if (typeof this.onReceive == "function") {
+      this.onReceive(giver, item);
+    }
   }
 });
 

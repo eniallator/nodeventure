@@ -18,7 +18,7 @@ dictionary.adjectives= ["an asshole", "a backstabber as well", "a big liar", "a 
 
 handler('tick', function () {
   // every 10 seconds on average
-  if (Math.random() * 10 < 1) {
+  if (Math.random() * 30 < 1) {
     var room = backstabber.getCurrentRoom(),
       exits = _.keys(room.exits),
       i = Math.floor(Math.random()*exits.length),
@@ -28,8 +28,6 @@ handler('tick', function () {
     var players_in_room = []
       , last_player = ""
       , guys;
-
-    console.log(players);
 
     players.forEach(function(player_name) {
       var player = room.game.players[player_name];
@@ -46,7 +44,6 @@ handler('tick', function () {
     if ( players_in_room.length > 1 ) {
       last_player = " and " + players_in_room[players_in_room.length -1];
     }
-
 
     guys = players_in_room.slice(0, players_in_room.length - 1).join(', ') + last_player;
 
