@@ -8,7 +8,7 @@ var oldlady = character('oldlady', {
 
 handler('tick', function () {
   // every 20 seconds on average
-  if (Math.random() * 20 < 1) {
+  if (Math.random() * 40 < 1) {
     oldlady.execute('say Oh my poor poor dear');
   }  
 });
