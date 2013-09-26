@@ -6,7 +6,7 @@ room('island', {
 
 room('island_beach', {
   description: "The Sailboat is moored up on a loose rock on a small sandy beach on the island.",
-  exits: { west: 'island_walrus_beach', south: 'island_inland', east: 'island_treeshouse_base' },
+  exits: { west: 'island_walrus_beach', south: 'island_inland', east: 'island_treehouse_base' },
 });
 
 room('island_walrus_beach', {
