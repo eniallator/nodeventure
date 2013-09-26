@@ -29,16 +29,18 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
   }
 
   var messages = [
-    'in an ungentlemanly manner.',
-    'with some resolve but little effect.',
-    'without any discernable effect.',
-    'in slow motion while the Rocky theme plays in the background.'
+    ['in an ungentlemanly manner.', ''],
+    ['with some resolve but little effect.', ''],
+    ['without any discernable outcome.', ''],
+    ['in slow motion while the Rocky theme plays in the background.', ''],
+    ['. You bastard.', '. What a bastard!'],
+    ['and leave a fist-shaped imprint', 'and leaves a fist-shaped imprint']
     ];
   //var msgNum = _.random(messages.length);
   var msgNum = Math.floor(Math.random()*messages.length);
   var msg = messages[msgNum];
 
-  player.write('You punch ' + otherPlayer.name + ' ' + msg);
-  otherPlayer.write(player.name + ' punches you' + ' ' + msg);
+  player.write('You punch ' + otherPlayer.name + ' ' + msg[0]);
+  otherPlayer.write(player.name + ' punches you' + ' ' + msg[1]?msg[1]:msg[0]);
 
 });
