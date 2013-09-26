@@ -4,21 +4,21 @@ room('soupkitchen', {
   exits: { east: 'home', north: 'dollhouse' along: 'garden'},
   items: [
     {
-      name: 'threeheads',
-      short: 'friendly creature',
-      description: 'Three heads wants to shake your hand!',
+      name: 'oven',
+      short: 'bake',
+      description: 'I like to bake',
       respawnTimer: 60
     },
     {
-      name: 'laughter',
-      short: 'an invisible laugh',
-      description: 'The laugh is coming your way.',
+      name: 'pan',
+      short: 'for simmering tasty things',
+      description: 'I make lots and lots of soup',
       respawnTimer: 60
     },
     {
-      name: 'echo',
-      short: 'a reverberation',
-      description: 'Makes you shake!',
+      name: 'knife',
+      short: 'chop chop',
+      description: 'I cut meat and veg',
       respawnTimer: 60
     }
   ]
