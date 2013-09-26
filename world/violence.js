@@ -31,7 +31,7 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
   var messages = [
     'in an ungentlemanly manner.',
     'with some resolve but little effect.',
-    'without any discernable effect.'
+    'without any discernable effect.',
     'in slow motion while the Rocky theme plays in the background.'
     ];
   var msgNum = _.random(messages.length)
