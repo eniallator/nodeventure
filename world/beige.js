@@ -1,7 +1,7 @@
 room('beige', {
   description: "This room is daubed in beige. You start feeling sleepy.",
   image: "http://cabinetmagazine.org/issues/2/beige.jpg",
-  exits: { east: 'home', south: 'beachpath', north: 'methodiks_room', west: 'spinning_cube', furtherwest: 'hove-w', southeast: 'ocean'},
+  exits: { east: 'home', south: 'beachpath', north: 'methodiks_room', west: 'spinning_cube', furtherwest: 'hove_w', southeast: 'ocean'},
   items: [
     {
       name: 'brush',

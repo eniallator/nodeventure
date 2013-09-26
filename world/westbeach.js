@@ -1,7 +1,7 @@
 room('westbeach', {
   description: "further along the beach. by the old ruins",
   image: "http://farm9.staticflickr.com/8116/8661273072_50e771036e.jpg",
-  exits: { east: 'beach' , west: 'hove-w' },
+  exits: { east: 'beachpath' , west: 'hove_w' },
   items: [
     {
       name: 'mast',
