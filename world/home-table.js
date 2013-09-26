@@ -19,7 +19,7 @@ handler('enterRoom', function (player, room, game) {
     player.display.eval(function(){
         jQuery('<style></style>').appendTo('head').text(
             'body {' +
-              'position: relative;'
+              'position: relative;' +
             '}' +
             'img#table {' +
                 'transition: transform 0.5s; -webkit-transition: -webkit-transform 0.5s; -moz-transition: -moz-transform 0.5s; -o-transition: -o-transform 0.5s;' +
