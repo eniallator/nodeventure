@@ -1,8 +1,7 @@
-
 room('spiders', {
   description: "A large spider lurks here...",
   image: "http://cabinetmagazine.org/issues/2/beige.jpg",
-  exits: { east: 'home', south: 'cube, north: 'camera', west: 'butterfly'},
+  exits: { east: 'home', back: 'garden'},
   items: [
     {
       name: 'threeheads',
