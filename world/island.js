@@ -93,29 +93,38 @@ galleon_captain = character('galleon_captain', {
 item('island_treehouse', 'chest', {
   short: 'a wooden chest',
   description: 'A wooden chest, seems to be where to marrooned guy keeps his things.',
-  respawnTimer: 0
+  respawnTimer: 60
 });
 
 item('island_treehouse', 'pot', {
   short: 'a lobster pot',
   description: 'Something to take fishing later...',
-  respawnTimer: 0
+  respawnTimer: 60
 });
 
 item('island_crashsite', 'plane', {
   short: 'Crashed Plane.',
   description: 'The remains of a downed small aircraft, several seats and luggage are still thrown around',
-  respawnTimer: 0
+  respawnTimer: 60
 });
 
 item('island_crashsite', 'divingsuit', {
   short: 'A diving suit.',
   description: 'A diving suit, and it still seems to be intact.',
-  respawnTimer: 0
+  respawnTimer: 60
 });
 
 item('galleon_captians_quarters', 'treasure', {
   short: 'Some Treasure',
   description: 'Some treasure, could be useful to bribe someone, or something.',
-  respawnTimer: 0
+  respawnTimer: 60
+});
+
+itemCommand("open", "chest", "Open something", function(rest, player, item, game){
+  player.write("You open the chest, inside you see a spear.");
+  player.getCurrentRoom().items.push({
+    name: 'spear',
+    short: 'a spear',
+    description: 'A fishing spear'
+  });
 });
