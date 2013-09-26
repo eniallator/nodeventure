@@ -27,7 +27,9 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
     player.write(rest + " isn't here! You're shadow-boxing dude.");
     return;
   }
-
+  // Messages appended to "You punch Bob" or "Bob punches you"
+  // If you need different grammar in either case then you can use two strings. Otherwise leave the second string empty
+  // and the first one will be used.
   var messages = [
     ['in an ungentlemanly manner.', ''],
     ['with some resolve but little effect.', ''],
@@ -41,6 +43,6 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
   var msg = messages[msgNum];
 
   player.write('You punch ' + otherPlayer.name + ' ' + msg[0]);
-  otherPlayer.write(player.name + ' punches you' + ' ' + msg[1]?msg[1]:msg[0]);
+  otherPlayer.write(player.name + ' punches you' + ' ' + (msg[1]?msg[1]:msg[0]));
 
 });

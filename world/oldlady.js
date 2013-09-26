@@ -1,6 +1,9 @@
 var oldlady = character('oldlady', {
   location: 'dollhouse',
-  description: 'An old lady. She seems strangely interested in one of the dolls in particular.'
+  description: 'An old lady. She seems strangely interested in one of the dolls in particular.',
+  onReceive: function(player, item) {
+    player.write(item);
+  }
 });
 
 handler('tick', function () {
@@ -9,3 +12,4 @@ handler('tick', function () {
     oldlady.execute('say Oh my poor poor dear');
   }  
 });
+
