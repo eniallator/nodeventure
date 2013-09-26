@@ -34,7 +34,8 @@ command('punch', 'Violence never solved anything but it\'s still worth a try.', 
     'without any discernable effect.',
     'in slow motion while the Rocky theme plays in the background.'
     ];
-  var msgNum = _.random(messages.length)
+  //var msgNum = _.random(messages.length);
+  var msgNum = Math.floor(Math.random()*messages.length);
   var msg = messages[msgNum];
 
   player.write('You punch ' + otherPlayer.name + ' ' + msg);
