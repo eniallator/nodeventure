@@ -1,6 +1,7 @@
 ---
 image: ""
 exits:
+  north: bellerbyscollege
   west: beige
   east: magnolia
   south: theskiff
