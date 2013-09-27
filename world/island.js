@@ -56,7 +56,7 @@ room('under_sea', {
 });
 
 room('galleon', {
-  description: "You dive off the boat and take a look underwater. As fishs swim past you, you spy in the disance depths what looks like a sunken Galleon. You ponder returning here when you have a diving suit.",
+  description: "A sunken Galleon beneath the wave. It looks likes its been down here for some time, with the mast collapsed through the deck.",
   exits: { west: 'galleon_bridge', down: 'galleon_below_deck' },
 });
 
@@ -72,7 +72,7 @@ room('galleon_below_deck', {
 
 room('galleon_captians_quarters', {
   description: "The captains quarters look in fine shape considering the state of the reast of the ship. There may even be treasure here.",
-  exits: { west: 'below_deck' },
+  exits: { west: 'galleon_below_deck' },
 });
 
 maroonedguy = character('maroonedguy', {
@@ -140,9 +140,9 @@ itemCommand('use', 'spear', 'Use something.', function(rest, player, item, game)
         description: 'How lucky where you to catch a nice fish like that.'
       });
     } else {
-      player.write("You thrown the spear, but alas, you miss the fish... rubbish");
+      player.write("You thrown the spear, but alas, you miss the fish... rubbish, maybe you might catch some next time.");
     }
   } else {
-    player.write("And what where you planning on doing with it... may I ask?");
+    player.write("And what, exactly. where you planning on doing with it... may I ask?");
   }
 });
