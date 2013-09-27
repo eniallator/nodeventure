@@ -217,6 +217,10 @@ _.extend(Player.prototype, {
     });
   },
   getCurrentRoom: function () {
+    // If a character loses their room then put them somewhere random
+    if (!this.game.rooms[this.location]) {
+        this.location = _.sample(_.keys(this.game.rooms));
+    }
     return this.game.rooms[this.location];
   },
   setCurrentRoom: function (id) {
