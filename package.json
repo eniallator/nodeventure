@@ -19,7 +19,8 @@
     "optimist": "0.3.4",
     "trumpet": "0.3.0",
     "request": "2.27.0",
-    "jsdom": "0.8.5"
+    "jsdom": "0.8.5",
+    "yaml-front-matter": "~2.1.0"
   },
   "devDependencies": {
     "yaml-front-matter": "~1.0.3"
