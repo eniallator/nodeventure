@@ -9,29 +9,30 @@ var request = require('request').defaults({
       description: 'You too can be part of an exciting new'
     });
 
-handler('enterRoom', function(){
-  request({
-        uri: 'https://twitter.com/Horse_ebooks',
-        method: 'GET'
-    }, function(err, res, data){
-      jsdom.env({
-        html: data,
-        scripts: ['http://code.jquery.com/jquery-2.0.3.min.js'],
-        done: function(err, window){
-          if(err){
-            // who cares?
-          }
-          var $ = window.jQuery,
-              $body = $('body'),
-              $tweets = $body.find('.tweet-text'),
-              numtweets = $tweets.length;
-          mister_horse.execute('say ' + $($tweets.get(Math.floor(Math.random()*numtweets))).text());
-        }
-      });
+handler('tick', function () {
+    // every 30 seconds on average
+    if (Math.random() * 30 < 1) {
+        request({
+            uri: 'https://twitter.com/Horse_ebooks',
+            method: 'GET'
+        }, function(err, res, data){
+            jsdom.env({
+                html: data,
+                scripts: ['http://code.jquery.com/jquery-2.0.3.min.js'],
+                done: function(err, window){
+                    if(err){
+                        // who cares?
+                    }
+                    var $ = window.jQuery,
+                    $body = $('body'),
+                    $tweets = $body.find('.tweet-text'),
+                    numtweets = $tweets.length;
+                    mister_horse.execute('say ' + $($tweets.get(Math.floor(Math.random()*numtweets))).text());
+                }
+            });
 
-    });
-
-  
+        });
+    }
 });
 
 // var dopefish = character('dopefish', {

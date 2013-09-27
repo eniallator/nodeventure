@@ -2,7 +2,7 @@
   "author": "Thomas Parslow <tom@almostobsolete.net>",
   "name": "nodeventure",
   "description": "A simple multi-user text adventure with a Websockets based client in Node.JS",
-  "version": "0.0.0-5",
+  "version": "0.0.0-6",
   "repository": {
     "type": "git",
     "url": "git://github.com/almost/nodeventure.git"
