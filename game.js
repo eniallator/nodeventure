@@ -107,6 +107,7 @@ _.extend(Game.prototype, {
       player.write(e.stack);
     }
   },
+
   // Override EventEmitter's emit to also emit an 'all' event to allow
   // event forwarding.
   emit: function (event /* ,args...*/) {
@@ -116,6 +117,7 @@ _.extend(Game.prototype, {
     events.EventEmitter.prototype.emit.apply(this, args);
   },
 
+  // This can be called after handling an even for a specific object to prevent the default version being emited
   preventDefault: function () {
     this._allowDefault = false;
   },
@@ -238,6 +240,7 @@ _.extend(Player.prototype, {
   },
   receive: function(giver, item) {
     this.inventory.push(item);
+    // NPCs (which are based on player) can define an onRecieve method
     if (typeof this.onReceive == "function") {
       this.onReceive(giver, item);
     }
@@ -245,6 +248,7 @@ _.extend(Player.prototype, {
 });
 
 
+// An interface to the client side code, see display.js on the client
 function Display(object, broadcast) {
   this.object = object;
   this.broadcast = broadcast;
@@ -257,13 +261,13 @@ _.extend(Display.prototype, {
     }
     this._command("eval", [code, vars]);
   },
+  reset: function () {
+    this._command("reset", []);
+  },
+  show: function (imageUrl, id, style) {
+    this._command("show", [imageUrl, id, style]);
+  },
   _command: function (command, args) {
     this.broadcast.call(this.object, {display: {command: command, arguments: args}});
   }
-});
-
-_.each(["show", "reset"], function (command) {
-  Display.prototype[command] = function () {
-    this._command(command, _.toArray(arguments));
-  };
 });
