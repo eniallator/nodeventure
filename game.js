@@ -80,10 +80,6 @@ _.extend(Game.prototype, {
         itemCommand = command + ' ' + itemName,
         commandFn;
 
-    if (player.isDead() && !(command === 'godmother' || commands === 'clickheels')) {
-      player.write("You're dead! Start acting like it (or type 'godmother')")
-    }
-
     try {
       if (this.commands.hasOwnProperty(itemCommand)) {
         var item = player.getItem(itemName) || player.getCurrentRoom().getItem(itemName);
@@ -187,7 +183,6 @@ function Player(game, name) {
   this.game = game;
   this.name = name;
   this.inventory = [];
-  this.health = 100;
 
   this.display = new Display(this, this.write);
 }
@@ -240,9 +235,6 @@ _.extend(Player.prototype, {
         this.game.emit('enterRoom:' + this.getCurrentRoom().id , this, this.getCurrentRoom(), this.game);
       }
     }
-  },
-  isDead: function () {
-    return this.health <= 0;
   },
   receive: function(giver, item) {
     this.inventory.push(item);
