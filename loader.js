@@ -5,9 +5,7 @@
 var vm          = require('vm'),
     fs          = require("fs"),
     game        = require('./game'),
-    cs          = require('coffee-script'),
     _           = require('underscore'),
-    yaml        = require('yaml-front-matter'),
     WorldModule = require('./world').WorldModule;
 
 module.exports.Loader = Loader;
@@ -54,29 +52,6 @@ _.extend(Loader.prototype, {
             if(this.stringEndsWith(fileLower, ".js")) {
               this.loadModule(file, mtime, function(module) {
                 vm.runInNewContext(code, module, fullPath);
-              });
-
-              // Coffee Script modules:
-            } else if(this.stringEndsWith(fileLower, ".coffee")) {
-              this.loadModule(file, mtime, function(module) {
-                vm.runInNewContext(cs.compile(code), module, fullPath);
-              });
-
-              // Plain text room modules:
-            } else if(this.stringEndsWith(fileLower, ".txt")) {
-              this.loadModule(file, mtime, function(module) {
-                // Strip the filename extension to use as a default room name:
-                var defaultName = file.substring(0, file.length - 4);
-
-                // yaml.loadFront() returns null if there is no YAML front matter.
-                // In this case we return a simple object to simulate empty YAML.
-                var obj  = yaml.loadFront(code, "__content") || { __content: code };
-
-                module.room(obj.name || defaultName, {
-                  description : obj.__content,
-                  image       : obj.image,
-                  exits       : obj.exits || []
-                });
               });
             }
           }
