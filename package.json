@@ -15,7 +15,7 @@
     "underscore": "*",
     "socket.io": "*",
     "express": "*",
-    "optimist": "*"
+    "vm2": "*"
   },
   "optionalDependencies": {},
   "engines": {

@@ -2,11 +2,11 @@
  * game object. It also handles reloading world modules as they change.
  *
  */
-var vm          = require('vm'),
-    fs          = require("fs"),
-    game        = require('./game'),
-    _           = require('underscore'),
-    WorldModule = require('./world').WorldModule;
+const {VM}        = require('vm2');
+const fs          = require("fs");
+const game        = require('./game');
+const _           = require('underscore');
+const WorldModule = require('./world').WorldModule;
 
 module.exports.Loader = Loader;
 
@@ -15,6 +15,8 @@ function Loader(path) {
   this.game = new game.Game();
   this.path = path;
   this.modules = {};
+
+
   this.update();
   setInterval(_.bind(this.update, this), 5000);
   // Game's emit has been extended to emit an 'all' event on any event
@@ -47,11 +49,14 @@ _.extend(Loader.prototype, {
 
             var code = fs.readFileSync(fullPath, "utf8");
 
-
             // Javascript modules:
             if(this.stringEndsWith(fileLower, ".js")) {
               this.loadModule(file, mtime, function(module) {
-                vm.runInNewContext(code, module, fullPath);
+                const vm = new VM({
+                  sandbox: module
+                });
+
+                vm.run(code, {filename: fullPath});
               });
             }
           }
