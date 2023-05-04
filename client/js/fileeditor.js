@@ -10,6 +10,7 @@ const errors = {};
 let currentFilename = null;
 
 async function switchSession(filename, revert=False, version="current") {
+  document.querySelector("#logs").innerHTML = "";
   if (!(filename in sessions)) {
     revert = true;
     sessions[filename] = ace.createEditSession("");
@@ -41,6 +42,8 @@ async function switchSession(filename, revert=False, version="current") {
   currentFilename = filename;
   loadHistory(filename, version);
   showErrors();
+  updateLogs();
+  document.querySelector("#filename").innerText = filename;
 }
 
 async function loadFileList() {
@@ -102,6 +105,16 @@ async function loadHistory(filename, currentVersion) {
 
 function showErrors() {
   document.querySelector("#errors").innerHTML = errors[currentFilename] || "";
+}
+
+async function updateLogs() {
+  const filename = currentFilename;
+  const res = await fetch("/logs/" + filename)
+  const logs = await res.text();
+  if (filename === currentFilename && document.querySelector("#logs").innerText !== logs) {
+    document.querySelector("#logs").innerText = logs;
+    document.querySelector("#logs").scrollTop = document.querySelector("#logs").scrollHeight;
+  }
 }
 
 function loadFromUrl() {
@@ -196,4 +209,5 @@ addEventListener("popstate", loadFromUrl);
 loadFileList();
 // Refresh the file list every 30s
 setInterval(loadFileList, 30000);
+setInterval(updateLogs, 5000)
 loadFromUrl();

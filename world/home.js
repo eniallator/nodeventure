@@ -1,5 +1,5 @@
 room("home", {
-  description: "You are at Async.JS a local meetup",
+  description: "You are at Async.JS a local meetup.",
   exits: {
     north: "home2",
   }

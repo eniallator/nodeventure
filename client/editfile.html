@@ -47,11 +47,12 @@
              min-width: 300px;
          }
 
-         #errors {
+         #errors, #logs {
              height: min-content;
              max-height: 20rem;
              white-space: pre-wrap;
              padding: 1rem;
+             overflow: auto;
          }
 
          #toolbar {
@@ -91,6 +92,7 @@
             </div>
             <div class="right">
                 <div id="toolbar">
+                    <span id="filename"></span>
                     <button id="save">Save</button>
                     <button id="revert">Revert</button>
                     <button id="delete">Delete</button>
@@ -100,6 +102,7 @@
                 </div>
                 <div id="editor"></div>
                 <div id="errors"></div>
+                <div id="logs"></div>
             </div>
         </div>
 

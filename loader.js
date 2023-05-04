@@ -20,6 +20,10 @@ function Loader(path) {
     fs.mkdirSync(this.path + "/.errors");
   }
 
+  if (!fs.existsSync(this.path + "/.logs")) {
+    fs.mkdirSync(this.path + "/.logs");
+  }
+
 
   this.update();
   setInterval(_.bind(this.update, this), 5000);
@@ -56,10 +60,20 @@ _.extend(Loader.prototype, {
             // Javascript modules:
             if(fileLower.endsWith(".js")) {
               this.loadModule(file, mtime, function(module) {
+                const logPath = _this.path  + "/.logs/" + file;
+                module.console = {
+                  log(...args) {
+                    console.log(`[${file}] `, ...args);
+                    fs.appendFileSync(logPath, args.join(" "));
+                  }
+                }
                 const vm = new VM({
                   sandbox: module
                 });
                 const errorPath = _this.path  + "/.errors/" + file;
+
+                fs.writeFileSync(logPath, "");
+
 
                 try {
                   vm.run(code, {filename: fullPath});

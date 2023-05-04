@@ -104,11 +104,8 @@ app.put("/files/:filename", function(req, res) {
   // req.setEncoding(null)
   req.on('data', (chunk) => {
     buffer = Buffer.concat([buffer, Buffer.from(chunk)])
-    // buffer += chunk;
-    console.log(chunk.length, buffer.length)
   });
   req.on("end", () => {
-    console.log(buffer.length)
     backupWorldFile(name);
     fs.writeFileSync(WORLD_DIR + "/" + name, buffer, {encoding: "binary"});
     loader.update();
@@ -134,9 +131,11 @@ app.delete("/files/:filename", function (req, res) {
 app.get("/edit/", function(req, res) {
   fs.createReadStream("./client/editfile.html").pipe(res);
 });
+
 app.get("/edit/:filename", function(req, res) {
   fs.createReadStream("./client/editfile.html").pipe(res);
 });
+
 
 app.get("/history/:filename", function(req, res) {
   const name = req.params.filename;
@@ -156,6 +155,18 @@ app.get("/history/:filename", function(req, res) {
   }
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify(history));
+});
+
+app.get("/logs/:filename", function(req, res) {
+  const name = req.params.filename;
+  if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
+    res.status(404);
+    res.end("I don't like the name")
+    return;
+  }
+  let path = WORLD_DIR + "/.logs/" + name;
+  const data = fs.readFileSync(path)
+  res.end(data);
 });
 
 server.listen(port, () => {
