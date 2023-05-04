@@ -1,4 +1,4 @@
-// Some basic command to get us started
+// Some basic command to get us started. If you're just figuring out how things work maybe start on a different module!
 
 // The fairy godmother from Discworld MUD here to help us in Nodeventure
 command('godmother', "When you're really stuck and need a little help to get home", function (rest, player, game) {
@@ -165,6 +165,7 @@ command('list', "List all players in the game.", function (rest, player, game) {
 });
 
 command('look', 'Get a list of people and items in the current room or get a description of a person or item.', function (rest, player, game) {
+  player.display.show(undefined, 'item'); // Clear any item images
   var room = player.getCurrentRoom();
   if (rest == '') {
     // Look at the current room
@@ -172,7 +173,7 @@ command('look', 'Get a list of people and items in the current room or get a des
     _.map(room.getPlayers(), function (p) {
       if (player.name !== p.name) {
         player.write(p.name + ' is here');
-      };
+      }
     });
     // Show all items in the room
     _.map(room.items, function(item) {
@@ -184,6 +185,7 @@ command('look', 'Get a list of people and items in the current room or get a des
     var item = player.getItem(rest) || room.getItem(rest);
     if (item) {
       player.write(item.description || item.short || item.name);
+      player.display.show(item.image, 'item', {width: "100%", height: "100%"});
     } else {
       var otherPlayer = room.getPlayer(rest);
       if (otherPlayer) {

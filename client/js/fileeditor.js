@@ -109,13 +109,12 @@ function showErrors() {
   const error = errors[currentFilename];
   document.querySelector("#errors").innerHTML = error || "";
 
-  // TODO: This flashes up the error then it disappears
   if (error) {
     const match = /\s+at (.*):(\d+):(\d+)/.exec(error);
     if (match) {
       editor.getSession().setAnnotations([{
-        row: parseInt(match[2]),
-        column: parseInt(match[3]),
+        row: parseInt(match[2])-1,
+        column: parseInt(match[3])-1,
         text: error.split("\n")[0],
         type: "error" // also "warning" and "information"
       }]);
@@ -193,7 +192,6 @@ document.querySelector('#uploadfile input').addEventListener("change", (e) => {
   const reader = new FileReader();
   reader.readAsArrayBuffer(file);
   reader.onload = async (evt) => {
-    alert(evt.target.result.byteLength)
     const res = await fetch("/files/" + filename, { body: evt.target.result, method: "PUT" });
     if (res.status == 201) {
       loadFileList();

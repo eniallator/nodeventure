@@ -4,7 +4,7 @@ var events = require("events");
 
 module.exports.WorldModule = WorldModule;
 
-function WorldModule(game) {
+function WorldModule(game, reportError) {
   events.EventEmitter.call(this);
   var _this = this;
   this._listenersAdded = [];
@@ -30,6 +30,7 @@ function WorldModule(game) {
     _.extend(player, properties);
     return player;
   };
+  this.reportError = reportError;
   this.setTimeout = function (fn, time) {
     setTimeout(function () {
       try {
@@ -47,9 +48,10 @@ function WorldModule(game) {
       try {
         fn.apply(_this, arguments);
       } catch (e) {
-        game.broadcast('Error running handler for event: ' + event);
-        game.broadcast(e);
-        game.broadcast(e.stack);
+        reportError(e.stack)
+        // game.broadcast('Error running handler for event: ' + event);
+        // game.broadcast(e);
+        // game.broadcast(e.stack);
         console.log('Error running handler for event: ' + event);
         console.log(e.stack);
         console.trace();

@@ -64,7 +64,7 @@ _.extend(Loader.prototype, {
                 module.console = {
                   log(...args) {
                     console.log(`[${file}] `, ...args);
-                    fs.appendFileSync(logPath, args.join(" "));
+                    fs.appendFileSync(logPath, args.join(" ") + "\n");
                   }
                 }
                 const vm = new VM({
@@ -94,7 +94,12 @@ _.extend(Loader.prototype, {
 
   // string string string -> void
   loadModule: function (name, mtime, func) {
-    var module = new WorldModule(this.game);
+    const errorPath = this.path  + "/.errors/" + name;
+    function reportError(message) {
+      fs.writeFileSync(errorPath, message)
+    }
+
+    var module = new WorldModule(this.game, reportError);
     module.mtime = mtime;
     this.modules[name] = module;
     try {

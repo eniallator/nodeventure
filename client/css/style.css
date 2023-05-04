@@ -10,6 +10,10 @@ body {
   background:#000;
   color:lime;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
 }
 
 body, html {
@@ -32,11 +36,29 @@ h1 a, h1 a:visited {
 
 /* output */
   #output {
-  	margin: 0.5em 0 8em 0;
   	padding:0 20px;
-    width: 47%;
-    padding-bottom: 10em;
+    width: 50%;
+    overflow-y: scroll;
+    min-height: 0;
   }
+
+  .game {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 0;
+  }
+
+  #display {
+      position: relative;
+      min-width: 0;
+      width: 50%;
+      min-height: 0;
+      overflow: auto;
+  }
+
 
   #display iframe {
       width: 50%;
@@ -75,10 +97,6 @@ h1 a, h1 a:visited {
 /* input area */
   #input {
     box-sizing: border-box;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width: 50%;
     background:#333;
     padding:10px 2.5% 20px 2.5%;
   }

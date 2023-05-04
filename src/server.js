@@ -157,7 +157,7 @@ app.get("/history/:filename", function(req, res) {
   res.end(JSON.stringify(history));
 });
 
-app.get("/logs/:filename", function(req, res) {
+app.get("/logs/:filename", function (req, res) {
   const name = req.params.filename;
   if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
     res.status(404);
@@ -165,8 +165,12 @@ app.get("/logs/:filename", function(req, res) {
     return;
   }
   let path = WORLD_DIR + "/.logs/" + name;
-  const data = fs.readFileSync(path)
-  res.end(data);
+  if (fs.existsSync(path)) {
+    const data = fs.readFileSync(path)
+    res.end(data);
+  } else {
+    res.end("")
+  }
 });
 
 server.listen(port, "0.0.0.0", () => {

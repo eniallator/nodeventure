@@ -1,13 +1,20 @@
 room("home", {
-  description: "You are at Async.JS a local meetup.",
+  description: "You are in the lobby of Spaces in Brighton. Tonight is Async night and we're building a game!",
   exits: {
-    north: "home2",
+    south: "home2",
   }
 });
 
 room("home2", {
-  description: "Still at Async.JS but more north",
+  description: "You are in the southern part of the lobby of Spaces in Brighton, there are some booths here for meetings.",
   exits: {
-    south: "home",
+    north: "home",
   }
 });
+
+item("home", "table",{
+  image: '/files/table.jpeg',
+  short: 'a table',
+  respawnTime: 120,
+  description: "a big table around which various people are seated with their laptops"
+})

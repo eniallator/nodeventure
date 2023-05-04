@@ -23,7 +23,6 @@
              display: flex;
              flex-direction: row;
              align-items: stretch;
-             flex-wrap: wrap;
          }
 
          .right {
@@ -31,6 +30,8 @@
              align-items: stretch;
              flex-direction: column;
              flex-grow: 1;
+             flex-shrink: 1;
+             min-width: 0;
          }
 
          #files {
@@ -44,7 +45,6 @@
 
          #editor {
              flex-grow: 1;
-             min-width: 300px;
          }
 
          #errors, #logs {
@@ -53,6 +53,8 @@
              white-space: pre-wrap;
              padding: 1rem;
              overflow: auto;
+             width: 100%;
+             min-width: 0;
          }
 
          #toolbar {
@@ -86,6 +88,7 @@
                     </form>
                     <div>
                     <a href="/" target="_blank">Play!</a>
+                    - <a href="https://github.com/asyncjs/nodeventure/wiki" target="_blank">Documentation</a>
                     - <a href="https://github.com/asyncjs/nodeventure/" target="_blank">GitHub</a>
                     </div>
                 </div>

@@ -19,13 +19,17 @@
     }
     
     var parent = document.querySelector('#display');
-    this.iframe = document.createElement('iframe');
-    parent.appendChild(this.iframe);
-    this.doc = this.iframe.contentDocument;
-    this.win = this.iframe.contentWindow;
+    // this.iframe = document.createElement('iframe');
+    // parent.appendChild(this.iframe);
+    // this.doc = this.iframe.contentDocument;
+    // this.win = this.iframe.contentWindow;
+
+    this.doc = document;
+    this.win = window;
+    this.body = parent;
     this.win.display = this;
 
-    this.addScript("//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
+    // this.addScript("//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
 
   };
   
@@ -60,7 +64,7 @@
       scriptEl.onload = function () {
         that._flushQueue();
       };
-      this.doc.body.appendChild(scriptEl);
+      this.body.appendChild(scriptEl);
     });
   };
 
@@ -72,7 +76,7 @@
     });
   };
 
-  
+
   // id, x and y are optional
   DisplayAPI.prototype.show = function (imageUrl, id, style) {
     this._run(function () {
@@ -82,15 +86,17 @@
           el.parentNode.removeChild(el);
         }
       }
-      var img = this.doc.createElement('img');
-      img.src = imageUrl;
-      img.style.position = 'absolute';
-      this.doc.body.appendChild(img);
-      for(var s in style) {
-        img.style[s] = style[s];
-      }
-      if (id != null) {
-        img.id = id;
+      if (imageUrl) {
+        var img = this.doc.createElement('img');
+        img.src = imageUrl;
+        img.style.position = 'absolute';
+        this.body.appendChild(img);
+        for (var s in style) {
+          img.style[s] = style[s];
+        }
+        if (id != null) {
+          img.id = id;
+        }
       }
     });
   };
