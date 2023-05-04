@@ -5,9 +5,22 @@ room("susanna's happy place", {
   }
 });
 
-item("susanna's happy place", "happyRoom",{
-  image: '/files/susannaHappyRoom',
-  short: 'zenRoom',
-  respawnTime: 3600,
+item("susanna's happy place", "a zen room",{
+  image: '/files/susanna.png',
+  short: 'a zen room',
+  respawnTime: 1,
   description: "A relaxing, modernist room with chilled lighting"
 });
+
+// handler('tick', () => {
+//     console.log(Object.keys(game.commands))
+// })
+
+command('where', 'find out where a player is: e.g. "where myMate', (rest, player, game) => {
+    console.log('finding!');
+    const playerToFind = game.players[rest.trim()];
+    if (!playerToFind) {
+        player.write(`Could not find ${rest}`);
+    }
+    player.write(`${rest} is at location: ${playerToFind.location}`);
+})

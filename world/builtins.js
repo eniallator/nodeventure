@@ -177,7 +177,7 @@ command('look', 'Get a list of people and items in the current room or get a des
     });
     // Show all items in the room
     _.map(room.items, function(item) {
-          player.write((item.short || item.name) + ' is here');
+          player.write((item.short || item.name) + ' is here (' + item.name + ')');
     });
     player.execute('exits');
   } else {
@@ -190,6 +190,9 @@ command('look', 'Get a list of people and items in the current room or get a des
       var otherPlayer = room.getPlayer(rest);
       if (otherPlayer) {
         player.write(otherPlayer.name + ' is ' + (otherPlayer.description || 'kind of generic looking'));
+      } else if (rest === player.name) {
+          player.broadcast(player.name + " is looking at themself, what a narcissist!")
+          player.write(player.name + ' is ' + (otherPlayer.description || 'kind of generic looking'));
       } else {
         player.write("I don't know how to look at that");
       }
@@ -199,6 +202,10 @@ command('look', 'Get a list of people and items in the current room or get a des
 
 command('iam', 'Change the description provided when someone looks at you.', function (rest, player, game) {
   player.description = rest;
+});
+
+command('whoami', 'Who ARE you?', function (rest, player, game) {
+  player.write("You are " + player.name)
 });
 
 command('tell', function (rest, player, game) {

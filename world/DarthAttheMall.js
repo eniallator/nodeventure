@@ -13,12 +13,22 @@ const darth = character("DarthAtTheMall", {
 // Let's make the town crier do stuff
 handler("tick", () => {
    // A tick happens once a second, but we only want to do something every 30 seconds or so
-   if (Math.random() < 0.03) {
-       if (Math.random() < 0.5) {
+   if (Math.random() < 0.03)
+   {
+       rand = Math.random();
+       if (rand < 0.1)
            darth.execute("what happens in dagobah stays in dagobah)");
-       } else {
-           darth.execute("oi got power converter");
-       }
+       else if (rand < 0.2)
+           darth.execute("Darth is in half");
+       else if (rand < 0.3)
+           darth.execute("I do not resemble a Ferrero Rocher");
+       else if (rand < 0.4)
+           darth.execute("Balenciaga shot first");
+       else if (rand < 0.5)
+           darth.execute("hold on a sec, Jar Jar's ordering a Hawaiian");
+       else
+           darth.execute("oi got a power converter");
+       
        
        // Leave via a random exit
        const room = darth.getCurrentRoom();

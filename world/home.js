@@ -12,20 +12,7 @@ room("home2", {
   exits: {
     north: "home",
     east: "broom cupboard",
+    west: "tradingRoom",
     south: "beach"
   }
-});
-
-item("home", "table",{
-  image: '/files/table.jpeg',
-  short: 'a table',
-  respawnTime: 120,
-  description: "a big table around which various people are seated with their laptops"
-});
-
-item("home", "chair", {
-    image: '/files/chair.jpg',
-    description: "This is a chair",
-    short: 'a chair',
-    respwnTime: 120,
 });

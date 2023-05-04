@@ -17,3 +17,15 @@ item('semsroom', 'secretWeapon', {
   description: 'The cat is back.'
 });
 
+command('runme', 'Take a walk',function (rest, player, game) {
+  for (let i = 0; i <= 20; i++) {
+    game.execute(player, "random");
+    game.execute(player, `shout ${i}`);
+  }
+} );
+
+command('voice', '?',function (rest, player, game) {
+  game.execute(player, "shout whhhat");
+});
+
+

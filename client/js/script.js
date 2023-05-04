@@ -29,7 +29,7 @@
       line.text(string);
     }
     $('#output').append(line);
-    $('html, body').animate({scrollTop: $(document).height()}, 'slow');
+    $('#output').animate({scrollTop: $("#output")[0].scrollHeight}, 'slow');
   }
 
 

@@ -10,6 +10,7 @@ itemCommand("sit", "chair", "", (rest, player, item, game) => {
 
 });
 
-itemCommand("tuckin", "chair", "", (rest, plater, item, game) => {
+itemCommand("tuckin", "chair", "", (rest, player, item, game) => {
     console.log("foo"); 
 });
+
