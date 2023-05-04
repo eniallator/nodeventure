@@ -158,9 +158,36 @@ document.querySelector("#save").addEventListener("click", save);
 document.querySelector("#delete").addEventListener("click", deleteFile);
 document.querySelector("#new").addEventListener("click", newFile);
 
+document.querySelector('#uploadfile input').addEventListener("change", (e) => {
+  const file = document.querySelector('#uploadfile input').files[0];
+  const filename = file.name;
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onload = async (evt) => {
+    alert(evt.target.result.byteLength)
+    const res = await fetch("/files/" + filename, { body: evt.target.result, method: "PUT" });
+    if (res.status == 201) {
+      loadFileList();
+      alert("Uploaded!")
+    } else {
+      alert(`Failed to upload ${res.status}: ${await res.text()}`);
+    }
+    document.querySelector('#uploadfile input').value = "";
+  }
+  reader.onerror = (evt) => {
+    alert("Failed to read file")
+  }
+
+});
+
 document.querySelector('#files ul').addEventListener("click", (e) => {
   if (e.target.tagName !== "BUTTON") return;
-  switchSession(e.target.innerText, false);
+  const filename = e.target.innerText;
+  if (filename.endsWith(".txt") || filename.endsWith(".js")) {
+    switchSession(filename, false);
+  } else {
+    window.open("/files/" + filename, "_blank")
+  }
 });
 
 addEventListener("popstate", loadFromUrl);

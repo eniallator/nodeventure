@@ -52,7 +52,6 @@ app.get("/files/", function(req, res) {
   let output = [];
   for (let f of fs.readdirSync(WORLD_DIR)) {
     if (f[0] === '.') continue;
-    const path = WORLD_DIR + "/" + f;
     const errorPath = WORLD_DIR + "/.errors/" + f;
     const error = fs.existsSync(errorPath) ? fs.readFileSync(errorPath, {"encoding": "utf-8"}) : null;
     output.push({filename: f, error});
@@ -101,13 +100,17 @@ app.put("/files/:filename", function(req, res) {
     res.end("I don't like the name")
     return;
   }
-  let body = "";
-  req.on('data', (data) => {
-        body += data;
+  let buffer = Buffer.alloc(0);
+  // req.setEncoding(null)
+  req.on('data', (chunk) => {
+    buffer = Buffer.concat([buffer, Buffer.from(chunk)])
+    // buffer += chunk;
+    console.log(chunk.length, buffer.length)
   });
   req.on("end", () => {
+    console.log(buffer.length)
     backupWorldFile(name);
-    fs.writeFileSync(WORLD_DIR + "/" + name, body);
+    fs.writeFileSync(WORLD_DIR + "/" + name, buffer, {encoding: "binary"});
     loader.update();
     res.status(201);
     res.end("");
