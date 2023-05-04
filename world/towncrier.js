@@ -2,7 +2,7 @@
 // treated like players. So to get them to do stuff we can call .execute() to 
 // have them execute a command just like a plyer would
 
-const towncrier = character("The town crier", {
+const towncrier = character("town crier", {
     location: "home",
     description: "looking nothing like a town and isn't crying. He's wearing a badge that says 'ask me about the skiff'"
 });
@@ -11,7 +11,12 @@ const towncrier = character("The town crier", {
 handler("tick", () => {
    // A tick happens once a second, but we only want to do something every 30 seconds or so
    if (Math.random() < 0.03) {
-       towncrier.execute("say Hear ye hear ye! This game needs some more things added to it! (hint: that's your job)");
+       if (Math.random() < 0.5) {
+           towncrier.execute("say Hear ye hear ye! This game needs some more things added to it! (hint: that's your job)");
+       } else {
+           towncrier.execute("say Ask me about The Skiff");
+       }
+       
        // Leave via a random exit
        const room = towncrier.getCurrentRoom();
        const exits = Object.keys(room.exits);
@@ -28,7 +33,6 @@ handler("tick", () => {
 
 //We can handle playerTalk to have a character respond to a player
 handler("playerTalk", (player, message) => {
-    console.log("playerTalk")
     // First we check that the player is in the same room as the town crier and the "player" is not the town crier
     if (player.getCurrentRoom() === towncrier.getCurrentRoom() && player !== towncrier) {
         // Did they mention the skiff?

@@ -82,6 +82,7 @@ _.extend(Loader.prototype, {
                   }
                 } catch(e) {
                   console.trace("Error running world module: " + e);
+                  _this.game.broadcast("Oh no some one broke " + file + "!")
                   fs.writeFileSync(errorPath, e.stack)
                 }
               });

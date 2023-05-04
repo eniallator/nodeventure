@@ -52,6 +52,7 @@ function WorldModule(game, reportError) {
         // game.broadcast('Error running handler for event: ' + event);
         // game.broadcast(e);
         // game.broadcast(e.stack);
+        game.broadcast("Oh dear there was an error handling the " + event + " event!")
         console.log('Error running handler for event: ' + event);
         console.log(e.stack);
         console.trace();
