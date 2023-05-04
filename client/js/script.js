@@ -87,7 +87,7 @@
       lineFeed.pop();
     }
 
-    $('#output').animate({scrollTop: $("#output").height()}, 'slow');
+    $('#output').animate({scrollTop: $("#output")[0].scrollHeight}, 'slow');
 
     // divider...
     clearTimeout(dividerTimeout);

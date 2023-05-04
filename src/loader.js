@@ -76,6 +76,7 @@ _.extend(Loader.prototype, {
 
 
                 try {
+                  console.log("Loading " + file)
                   vm.run(code, {filename: fullPath});
                   if (fs.existsSync(errorPath)) {
                     fs.unlinkSync(errorPath);

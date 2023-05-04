@@ -61,7 +61,7 @@ command('take', "Alias for 'get'", function(rest, player, game) {
 
 command('drop', 'Leave an item from your inventory in the current room.', function (itemName, player, game) {
   var item = _.find(player.inventory, function (it) {
-    return itemName === it.name;
+    return itemName === it.name || itemName === it.short;
   });
   if (item) {
     // We use an event so it can be overridden for different items, see below for the default implementation
