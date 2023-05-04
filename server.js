@@ -8,7 +8,8 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const port = parseInt(process.env['PORT'] || '8989', 10);
-const loader  = new Loader("./world");
+const WORLD_DIR = "./world"
+const loader  = new Loader(WORLD_DIR);
 const game    = loader.game;
 
 // Serve the index.html as the root
@@ -40,6 +41,114 @@ io.sockets.on('connection', function (socket) {
       delete game.players[player.name];
     });
   });
+});
+
+// Code editor
+app.get("/files/", function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  const output = [];
+  for (let f of fs.readdirSync(WORLD_DIR)) {
+    if (f[0] === '.') continue;
+    const path = WORLD_DIR + "/" + f;
+    const errorPath = WORLD_DIR + "/.errors/" + f;
+    const error = fs.existsSync(errorPath) ? fs.readFileSync(errorPath, {"encoding": "utf-8"}) : null;
+    output.push({filename: f, error});
+  }
+
+  res.end(JSON.stringify(output));
+});
+
+app.get("/files/:filename", function(req, res) {
+  const name = req.params.filename;
+  if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
+    res.status(404);
+    res.end("I don't like the name")
+    return;
+  }
+
+  let path = WORLD_DIR + "/" + name;
+  if (req.query.version) {
+    path = WORLD_DIR + "/.backups/" + name + "." + parseInt(req.query.version, 10);
+  }
+  const data = fs.readFileSync(path)
+  res.end(data);
+});
+
+function backupWorldFile(name) {
+  const path = WORLD_DIR + "/" + name;
+  if (!fs.existsSync(path)) return;
+  if (!fs.existsSync(WORLD_DIR + "/.backups")) {
+    fs.mkdirSync(WORLD_DIR + "/.backups");
+  }
+  for (let i = 1; ; i++) {
+    const backupPath = WORLD_DIR + "/.backups/" + name + "." + i;
+    if (!fs.existsSync(backupPath)) {
+      fs.copyFileSync(path, backupPath);
+      break;
+    }
+  }
+}
+
+app.put("/files/:filename", function(req, res) {
+  const name = req.params.filename;
+  if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
+    res.status(404);
+    res.end("I don't like the name")
+    return;
+  }
+  let body = "";
+  req.on('data', (data) => {
+        body += data;
+  });
+  req.on("end", () => {
+    backupWorldFile(name);
+    fs.writeFileSync(WORLD_DIR + "/" + name, body);
+    loader.update();
+    res.status(201);
+    res.end("");
+  })
+});
+
+app.delete("/files/:filename", function (req, res) {
+  const name = req.params.filename;
+  if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
+    res.status(404);
+    res.end("I don't like the name")
+    return;
+  }
+
+  backupWorldFile(name);
+  fs.unlinkSync(WORLD_DIR + "/" + name);
+  res.status(201);
+  res.end("");
+});
+
+app.get("/edit/", function(req, res) {
+  fs.createReadStream("./client/editfile.html").pipe(res);
+});
+app.get("/edit/:filename", function(req, res) {
+  fs.createReadStream("./client/editfile.html").pipe(res);
+});
+
+app.get("/history/:filename", function(req, res) {
+  const name = req.params.filename;
+  if (!(name && name.match && name.match(/^[a-zA-Z0-9._-]+$/))) {
+    res.status(404);
+    res.end("I don't like the name")
+    return;
+  }
+  history = [];
+  for (let i = 1; ; i++) {
+    const backupPath = WORLD_DIR + "/.backups/" + name + "." + i;
+    if (fs.existsSync(backupPath)) {
+      history.unshift({version: i, mtime: fs.statSync(backupPath).mtime});
+    } else {
+      break;
+    }
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(history));
 });
 
 server.listen(port, () => {

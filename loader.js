@@ -16,6 +16,10 @@ function Loader(path) {
   this.path = path;
   this.modules = {};
 
+  if (!fs.existsSync(this.path + "/.errors")) {
+    fs.mkdirSync(this.path + "/.errors");
+  }
+
 
   this.update();
   setInterval(_.bind(this.update, this), 5000);
@@ -50,23 +54,28 @@ _.extend(Loader.prototype, {
             var code = fs.readFileSync(fullPath, "utf8");
 
             // Javascript modules:
-            if(this.stringEndsWith(fileLower, ".js")) {
+            if(fileLower.endsWith(".js")) {
               this.loadModule(file, mtime, function(module) {
                 const vm = new VM({
                   sandbox: module
                 });
+                const errorPath = _this.path  + "/.errors/" + file;
 
-                vm.run(code, {filename: fullPath});
+                try {
+                  vm.run(code, {filename: fullPath});
+                  if (fs.existsSync(errorPath)) {
+                    fs.unlinkSync(errorPath);
+                  }
+                } catch(e) {
+                  console.trace("Error running world module: " + e);
+                  fs.writeFileSync(errorPath, e.stack)
+                }
               });
             }
           }
         }
     }
     return this;
-  },
-
-  stringEndsWith: function (string, suffix) {
-    return string.indexOf(suffix, string.length - suffix.length) !== -1;
   },
 
   // string string string -> void

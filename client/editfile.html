@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Nodeventure Editor</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <script src=" https://cdn.jsdelivr.net/npm/ace-builds@1.19.0/src-min-noconflict/ace.min.js "></script>
+        <link href=" https://cdn.jsdelivr.net/npm/ace-builds@1.19.0/css/ace.min.css " rel="stylesheet">
+
+        <style>
+         html, body, .container {
+             padding: 0;
+             margin: 0;
+             width: 100%;
+             height: 100%;
+         }
+
+         .container {
+             display: flex;
+             flex-direction: row;
+             align-items: stretch;
+             flex-wrap: wrap;
+         }
+
+         .right {
+             display: flex;
+             align-items: stretch;
+             flex-direction: column;
+             flex-grow: 1;
+         }
+
+         #files {
+             width: 10rem;
+             max-width: 20rem;
+             padding: 1rem;
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+         }
+
+         #editor {
+             flex-grow: 1;
+             min-width: 300px;
+         }
+
+         #errors {
+             height: min-content;
+             max-height: 20rem;
+             white-space: pre-wrap;
+             padding: 1rem;
+         }
+
+         #toolbar {
+             height: min-content;
+         }
+
+         button {
+             margin: 5px;
+         }
+
+         .error {
+             color: red;
+             font-weight: bold;
+         }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <div id="files">
+                <ul>
+                    <li>Loading...</li>
+                </ul>
+                <div>
+                    <a href="/" target="_blank">Play!</a>
+                    - <a href="https://github.com/asyncjs/nodeventure/" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="right">
+                <div id="toolbar">
+                    <button id="save">Save</button>
+                    <button id="revert">Revert</button>
+                    <button id="delete">Delete</button>
+                    Version: <select id="version">
+                    </select>
+                    <button id="new">New File</button>
+                </div>
+                <div id="editor"></div>
+                <div id="errors"></div>
+            </div>
+        </div>
+
+        <script src="/js/fileeditor.js"></script>
+    </body>
+</html>
