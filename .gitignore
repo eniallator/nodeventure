@@ -11,3 +11,7 @@ yarn-error.log*
 *.tsbuildinfo
 .npm
 .eslintcache
+
+world/.backups/
+world/.logs/
+world/.errors/

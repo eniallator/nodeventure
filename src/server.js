@@ -169,6 +169,6 @@ app.get("/logs/:filename", function(req, res) {
   res.end(data);
 });
 
-server.listen(port, () => {
+server.listen(port, "0.0.0.0", () => {
   console.log('listening on *:' + port);
 });

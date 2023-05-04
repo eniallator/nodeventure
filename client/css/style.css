@@ -1,6 +1,6 @@
 /* Styles here! */
 body, input, button, pre {  /* font */
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P';
   font-weight: 400;
   -webkit-transition: all 1s ease-in;
   -moz-transition: all 1s ease-in;
