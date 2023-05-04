@@ -12,6 +12,8 @@ const WORLD_DIR = "./world"
 const loader  = new Loader(WORLD_DIR);
 const game    = loader.game;
 
+const _ = require("underscore");
+
 // Serve the index.html as the root
 app.get("/", function(req, res) {
   fs.createReadStream("./client/index.html").pipe(res);
@@ -47,7 +49,7 @@ io.sockets.on('connection', function (socket) {
 app.get("/files/", function(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  const output = [];
+  let output = [];
   for (let f of fs.readdirSync(WORLD_DIR)) {
     if (f[0] === '.') continue;
     const path = WORLD_DIR + "/" + f;
@@ -55,6 +57,8 @@ app.get("/files/", function(req, res) {
     const error = fs.existsSync(errorPath) ? fs.readFileSync(errorPath, {"encoding": "utf-8"}) : null;
     output.push({filename: f, error});
   }
+
+  output = _.sortBy(output, f => f.filename)
 
   res.end(JSON.stringify(output));
 });
