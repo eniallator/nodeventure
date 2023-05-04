@@ -18,8 +18,10 @@ async function switchSession(filename, revert=False, version="current") {
       sessions[filename].setMode("ace/mode/javascript");
     }
     sessions[filename].on('change', function (delta) {
-      const changed = sessions[filename].getValue() != initial[filename];
-      if (changed !== changed[filename]) {
+      const c = sessions[filename].getValue() != initial[filename];
+      console.log(changed)
+      if (c !== changed[filename]) {
+        changed[filename] = c;
         loadFileList();
       }
     });
@@ -104,7 +106,21 @@ async function loadHistory(filename, currentVersion) {
 }
 
 function showErrors() {
-  document.querySelector("#errors").innerHTML = errors[currentFilename] || "";
+  const error = errors[currentFilename];
+  document.querySelector("#errors").innerHTML = error || "";
+
+  // TODO: This flashes up the error then it disappears
+  if (error) {
+    const match = /\s+at (.*):(\d+):(\d+)/.exec(error);
+    if (match) {
+      editor.getSession().setAnnotations([{
+        row: parseInt(match[2]),
+        column: parseInt(match[3]),
+        text: error.split("\n")[0],
+        type: "error" // also "warning" and "information"
+      }]);
+    }
+  }
 }
 
 async function updateLogs() {
