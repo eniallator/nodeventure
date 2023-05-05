@@ -25,7 +25,16 @@ command('clickheels', function (rest, player, game) {
 });
 
 command('commands', 'list all commands available in the game', function (rest, player, game) {
-  player.write('Available commands: ' + _.without(_.keys(game.commands), 'teleport').join(", "));
+  var commands = _.keys(game.commands).filter((command,index,array)=>{
+    if(command.indexOf(' ')==-1){
+      return true;
+    }
+    var itemName = command.split(' ')[1];
+    var item = player.getItem(itemName) || player.getCurrentRoom().getItem(itemName);
+    return !!item;    
+  });
+  
+  player.write('Available commands: ' + _.without(commands, 'teleport').join(", "));
 });
 
 command('help', 'get you some help! Example: "help <command>"', function (rest, player, game) {
