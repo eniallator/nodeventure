@@ -11,14 +11,14 @@
     this.iframe = null;
     this.reset();
   }
-  
+
   DisplayAPI.prototype.reset = function () {
     this._queue = null;
     if (this.iframe) {
       this.iframe.parentNode.removeChild(this.iframe);
     }
-    
-    var parent = document.querySelector('#display');
+
+    var parent = document.querySelector("#display");
     // this.iframe = document.createElement('iframe');
     // parent.appendChild(this.iframe);
     // this.doc = this.iframe.contentDocument;
@@ -30,9 +30,8 @@
     this.win.display = this;
 
     // this.addScript("//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
-
   };
-  
+
   DisplayAPI.prototype._run = function (fn) {
     if (this._queue) {
       this._queue.push(fn);
@@ -68,28 +67,27 @@
     });
   };
 
-
   DisplayAPI.prototype.eval = function (string, args) {
     this._run(function () {
-      var wrapped = "with (" +JSON.stringify(args || {}) + ") {" + string + "}";
+      var wrapped =
+        "with (" + JSON.stringify(args || {}) + ") {" + string + "}";
       this.win.eval(wrapped);
     });
   };
-
 
   // id, x and y are optional
   DisplayAPI.prototype.show = function (imageUrl, id, style) {
     this._run(function () {
       if (id != null) {
-        var el = this.doc.getElementById(id)
+        var el = this.doc.getElementById(id);
         if (el) {
           el.parentNode.removeChild(el);
         }
       }
       if (imageUrl) {
-        var img = this.doc.createElement('img');
+        var img = this.doc.createElement("img");
         img.src = imageUrl;
-        img.style.position = 'absolute';
+        img.style.position = "absolute";
         this.body.appendChild(img);
         for (var s in style) {
           img.style[s] = style[s];
@@ -98,6 +96,26 @@
           img.id = id;
         }
       }
+    });
+  };
+
+  DisplayAPI.prototype.draw = function (id, items) {
+    this._run(function () {
+      const canvas = this.doc.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.id = id;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.style.overflow = "hidden";
+      console.log(id, items);
+      items.forEach((item) => {
+        if (item.image != null) {
+          const itemImg = new Image(30, 30);
+          itemImg.src = item.image;
+          itemImg.onload = () => ctx.drawImage(itemImg, 10, 20, 30, 30);
+        }
+      });
+      this.body.appendChild(canvas);
     });
   };
 
