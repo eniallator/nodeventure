@@ -101,23 +101,63 @@
 
   DisplayAPI.prototype.draw = function (id, items) {
     this._run(function () {
-      const canvas = this.doc.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+      let canvas;
+      const existingCanvas = document.querySelector(`canvas#${id}`);
+      if (existingCanvas != null) {
+        canvas = existingCanvas;
+      } else {
+        canvas = this.doc.createElement("canvas");
+        this.body.appendChild(canvas);
+      }
       canvas.id = id;
       canvas.style.width = "100%";
       canvas.style.height = "100%";
       canvas.style.overflow = "hidden";
-      console.log(id, items);
+
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       items.forEach((item) => {
-        if (item.image != null) {
-          const itemImg = new Image(30, 30);
-          itemImg.src = item.image;
-          itemImg.onload = () => ctx.drawImage(itemImg, 10, 20, 30, 30);
-        }
+        const xRawHash = hashString(`${item.name}x`);
+        const yRawHash = hashString(`${item.name}y`);
+        const colourRawHash = hashString(`${item.name}colour`);
+        const padding = 3;
+        const height = 10;
+        const { width } = ctx.measureText(item.name);
+        ctx.font = `${height}px`;
+        const x =
+          positiveModulo(xRawHash, canvas.width - width - 2 * padding) +
+          padding;
+        const y =
+          positiveModulo(yRawHash, canvas.height - height - 2 * padding) +
+          padding;
+        ctx.fillStyle = `hsl(${positiveModulo(colourRawHash, 360)},100%,50%)`;
+        ctx.fillRect(
+          x - padding,
+          y - padding - height / 2,
+          Math.min(50, width) + 2 * padding,
+          height + 2 * padding
+        );
+        ctx.fillStyle = "white";
+        ctx.fillText(item.name, x, y, 50);
       });
-      this.body.appendChild(canvas);
     });
   };
 
   window.display = new DisplayAPI();
 })();
+
+function positiveModulo(a, b) {
+  return ((a % b) + b) % b;
+}
+
+function hashString(str) {
+  let hash = 0;
+  if (str.length == 0) return hash;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+}
